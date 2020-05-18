@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "header": "../../components/header/header"
+  },
+  "enablePullDownRefresh": true,
+  "component": true
+}

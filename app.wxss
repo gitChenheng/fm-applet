@@ -1,0 +1,83 @@
+/**app.wxss**/
+@import "./colorui/main.wxss";
+@import "./colorui/icon.wxss";
+page{
+  background: #151722;
+  color: #fff;
+}
+view{
+  word-break: break-all;
+}
+.foot{
+  background: #151722!important;
+}
+.flex{
+  display: flex;
+}
+.flex-justify{
+  justify-content: center;
+}
+.flex-align{
+  align-items: center;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding:0;
+  box-sizing: border-box;
+  background:#151722;
+}
+.title{
+  margin:20rpx 50rpx;
+}
+.hr{
+  border-top: 1px solid #ddd;
+  margin: 20rpx 50rpx;
+}
+.con{
+  margin:0 50rpx;
+}
+
+.gl-color{
+  color:#4684FD;
+}
+.gl-cl{
+  color: #DDBE91;
+}
+.gl-bg1{
+  background: #151722;
+}
+.gl-bg2{
+  background:#4684FD;
+}
+
+.cut-off-line{
+  border-top: 1px solid #2E323E;
+}
+
+.forFree{
+  color: #E6BF72;
+  border: 1px solid #A8986D;
+  font-size: 24rpx;
+  padding: 5rpx;
+  background: #484D58;
+}
+.notFree{
+  color: #BA7677;
+  border:1px solid #BA7677;
+  font-size: 24rpx;
+  padding: 5rpx;
+  background: #392B35;
+}
+
+.cu-form-group{
+  color: #000
+}

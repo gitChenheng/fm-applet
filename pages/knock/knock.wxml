@@ -1,0 +1,102 @@
+<!--pages/knock/knock.wxml-->
+<header></header>
+<view class='con' style='overflow:hidden'>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+    <!-- <view class='knock_section'>
+      <label class='knock_label'>标题：</label>
+      <input name="title" placeholder="请输入标题"/>
+    </view> -->
+    <view class='knock_section'>
+      <label class='knock_label'>奖品：</label>
+      <input name="name" placeholder="请输入奖品内容"/>
+    </view>
+    <view class='knock_section'>
+      <label class='knock_label'>金主：</label>
+      <input name="initiator" placeholder="请输入金主名称"/>
+    </view>
+    <view class="knock_section">
+      <picker name='typeId' bindchange="bindTypeChange" value="{{typeIdx}}" range="{{typeData}}" range-key='name'>
+        <label class='knock_label'>类别：</label>
+        <text class="knock_placecholder" wx:if="{{typeIdx===null}}">点击此处选择类别</text>
+        <view class="picker" wx:else>{{typeData[typeIdx].name}}</view>
+      </picker>
+    </view>
+    <view class="knock_section">
+      <picker name="platformId" bindchange="bindPlatformChange" value="{{platformIdx}}" range="{{platformData}}" range-key="name">
+        <label class='knock_label'>平台：</label>
+        <text class="knock_placecholder" wx:if="{{platformIdx===null}}">点击此处选择平台</text>
+        <view class="picker" wx:else>{{platformData[platformIdx].name}}</view>
+      </picker>
+    </view>
+    <view class='knock_section'>
+      <label class='knock_label'>价值：</label>
+      <input name="price" type="number" placeholder="请输入奖品价值"/>
+    </view>
+    <view class='knock_section'>
+      <picker name="startTime" mode="date" bindchange='bindStartTimeChange' value="{{startTime}}" start="{{today}}" end="{{endTime===''?'':endTime}}">
+        <label class='knock_label'>开始时间：</label>
+        <text class="knock_placecholder" wx:if="{{startTime===''}}">请选择活动开始时间</text>
+        <view class="picker" wx:else>{{startTime}}</view>
+      </picker>
+      <!-- <picker name="startTime" mode="multiSelector" bindchange='changeDateTime' value="{{dateTime}}" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+        <label class='knock_label'>开始时间：</label>
+        {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}:{{dateTimeArray[5][dateTime[5]]}}
+      </picker> -->
+    </view>
+    <view class='knock_section'>
+      <picker name="endTime" mode="date" bindchange='bindEndTimeChange' value="{{endTime}}" start="{{startTime===''?today:startTime}}">
+        <label class='knock_label'>结束时间：</label>
+        <text class="knock_placecholder" wx:if="{{endTime===''}}">请选择活动结束时间</text>
+        <view class="picker" wx:else>{{endTime}}</view>
+      </picker>
+    </view>
+    <view class='knock_section'>
+      <label class='knock_label'>备注：</label>
+      <!-- <input name="remarks" placeholder="请输入备注"/> -->
+      <textarea name="details" placeholder="请输入备注"></textarea>
+    </view>
+    <view class="knock_section" style='display:flex;justify-content:space-between'>
+      <view>
+        <view style='display:inline-block;margin-right:30rpx'>免费参与</view>
+        <switch name="free" checked/>
+      </view>
+      <view>
+        <view style='display:inline-block;margin-right:30rpx'>匿名</view>
+        <switch name="anonymous"/>
+      </view>
+    </view>
+    <!-- <view class="section section_gap">
+      <view class="section__title">slider</view>
+      <slider name="slider" show-value></slider>
+    </view> -->
+    <!-- <view class="section section_gap">
+      <view class="section__title">radio</view>
+      <radio-group name="radio-group">
+        <label>
+          <radio value="radio1" />
+          radio1
+        </label>
+        <label>
+          <radio value="radio2" />
+          radio2
+        </label>
+      </radio-group>
+    </view> -->
+    <!-- <view class="section section_gap">
+      <view class="section__title">checkbox</view>
+      <checkbox-group name="checkbox">
+        <label>
+          <checkbox value="checkbox1" />
+          checkbox1
+        </label>
+        <label>
+          <checkbox value="checkbox2" />
+          checkbox2
+        </label>
+      </checkbox-group>
+    </view> -->
+    <view class="btn-area" style='margin:80rpx 0'>
+      <button form-type="submit" class='cu-btn block bg-black margin-tb-sm lg'>提交爆料</button>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,28 @@
+/* pages/content_mt/content_mt.wxss */
+.info_block{
+  width: 100%;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+}
+.flex{
+  display: flex;
+  justify-content: space-around
+}
+.smbtn{
+  display: inline;
+}
+.input{
+  display: inline-block;
+border: 1rpx solid #fff;
+width: 400rpx;
+color: #fff;
+height: 80rpx;
+line-height: 80rpx;
+vertical-align: middle;
+
+}
+.flex>image{
+  width:200rpx;
+  height:200rpx;
+}

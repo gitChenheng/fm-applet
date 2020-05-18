@@ -1,0 +1,26 @@
+<!-- <image src='../../img/exp.png' style='width:750rpx;height:200rpx'></image> -->
+
+<!-- <view style='height:100px;background:#000'>
+  <cu-custom  isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content" style='text-align:center;color:#fff'>微动画</view>
+  </cu-custom>
+</view>
+<view style='width":100%;margin-top:100px' class="margin radius bg-gradual-green shadow-blur">
+  <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-black response" style="height:100rpx;width:100%"></image>
+</view> -->
+
+
+
+<!-- <view style='width":100%;margin-top:100px' class="margin radius bg-gradual-green shadow-blur">
+  <image src="https://image.weilanwl.com/gif/wave.gif" mode="scaleToFill" class="gif-black response" style="height:100rpx;width:100%"></image>
+</view> -->
+
+<!-- <view style='height:120rpx;background:#000'>
+  <cu-custom isBack="{{true}}">
+    <view slot="backText">返回</view>
+  </cu-custom>
+  <view style='position:relative;text-align:center;color:#fff;font-weight:700;overflow:hidden'>
+    <view style='margin-top:80rpx'>分 母</view>
+  </view>
+</view> -->

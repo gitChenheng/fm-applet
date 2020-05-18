@@ -1,0 +1,21 @@
+/* pages/knock/knock.wxss */
+.knock_section{
+  /* display: flex;
+  justify-content: space-between; */
+  margin: 20rpx 0;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #ddd;
+}
+.knock_section>input,.picker{
+  display: inline-block;
+  width:400rpx;
+  vertical-align: middle;
+}
+.knock_label{
+  display: inline-block;
+  width: 200rpx;
+  vertical-align: middle;
+}
+.knock_placecholder{
+  color: gray
+}

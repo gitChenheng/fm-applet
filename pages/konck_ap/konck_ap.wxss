@@ -1,0 +1,14 @@
+/* pages/konck_ap/konck_ap.wxss */
+.info_block{
+  border-top: 1px solid #ddd;
+  padding: 20rpx;
+}
+.info_block:last-child{
+  border-bottom: 1px solid #ddd;
+}
+button{
+  width: 150rpx;
+  display: inline-block;
+  padding: 0;
+  margin: 20rpx;
+}

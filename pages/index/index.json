@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "basics": "../../pages/basics/basics",
+    "my": "../../pages/my/my"
+  },
+  "enablePullDownRefresh":false
+}

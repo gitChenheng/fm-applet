@@ -1,0 +1,9 @@
+/* pages/range/range.wxss */
+.info_block{
+  display: flex;
+  justify-content: space-between
+}
+.range_con_text1,range_con_text2{
+  margin: 5rpx 0;
+  display: inline-block;
+}

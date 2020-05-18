@@ -1,0 +1,26 @@
+<!--pages/konck_ap/konck_ap.wxml-->
+<view wx:if="{{info.length===0}}" style="text-align:center;margin-top:500rpx;color:#ddd">暂无爆料</view>
+<view wx:else style='margin:25rpx;width:700rpx'>
+  <view class='info_block' wx:for="{{info}}" wx:for-item="item" wx:key="index">
+    <!-- 标题:<text>{{item.title}}\n</text> -->
+    奖品名称:<text>{{item.name}}\n</text>
+    奖品价值:<text>{{item.price}}\n</text>
+    类别:<text>{{item.type}}\n</text>
+    平台:<text>{{item.platform}}\n</text>
+    发布者:
+    <text wx:if="{{item.author==''}}">匿名\n</text>
+    <text wx:else>{{item.author}}\n</text>
+    发布时间:<text>{{item.createdAt}}\n</text>
+    活动时间:<text>{{item.startTime}}--{{item.endTime}}</text>
+    <view style="height:20rpx"></view>
+    <picker bindchange="bindLevelChange" data-infoIdx="{{index}}" value="{{item.levelIdx}}" range="{{levels}}" range-key='label'>
+      <label class='knock_label'>星级：</label>
+      <text style="color:red" wx:if="{{item.levelIdx===null}}">点击此处选择星级</text>
+      <view class="picker" wx:else>{{levels[item.levelIdx].label}}</view>
+    </picker>
+    <view style="height:20rpx"></view>
+    驳回理由：<input bindinput="xxx" data-infoIdx="{{index}}" value='{{item.rejectReason}}'></input>
+    <button bindtap='pass' data-infoIdx="{{index}}" data-infoId="{{item.id}}">通过</button>
+    <button bindtap='reject' data-infoIdx="{{index}}" data-infoId="{{item.id}}">驳回</button>
+  </view>
+</view>

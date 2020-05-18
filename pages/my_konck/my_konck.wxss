@@ -1,0 +1,38 @@
+/* pages/my_konck/my_konck.wxss */
+.info_block{
+  width: 100%;
+  text-align: left;
+
+  position: relative;
+background: #202531;
+border-radius: 30rpx;
+padding: 15rpx 30rpx;
+
+}
+.cu-form-group{
+  background: #202531;
+}
+.cu-form-group>.title{
+  color: #ddd;
+  margin:0;
+  height: auto!important;
+  min-width: 160rpx;
+
+}
+.cu-form-group>input{
+  color: #ddd;
+  word-break: break-all;
+
+}
+.flex{
+  display: flex;
+  justify-content: space-around
+}
+.smbtn{
+  display: inline;
+  /* vertical-align: middle; */
+}
+.input{
+  display: inline;
+  /* vertical-align: middle; */
+}

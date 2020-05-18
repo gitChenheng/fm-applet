@@ -1,0 +1,41 @@
+<view style="margin:0 25rpx;width:700rpx;">
+  <view class='info_block' style='margin-bottom:20rpx' wx:for="{{info}}" wx:for-item="item" wx:key="index">
+    <!-- 标题:<text>{{item.title}}\n</text> -->
+    <view class="cu-form-group">
+      <view class="title">奖品名称</view>
+      <input disabled placeholder="" value='{{item.name}}'/>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">奖品价值</view>
+      <input disabled placeholder="" value='￥{{item.price}}'/>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">奖品类别</view>
+      <input disabled placeholder="" value='{{item.type}}'/>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">所在平台</view>
+      <input disabled placeholder="" value='{{item.platform}}'/>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">发布时间</view>
+      <input disabled placeholder="" value='{{item.createdAt}}'/>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">活动时间</view>
+      <input disabled placeholder="" value='{{item.startTime}}--{{item.endTime}}'/>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">审核结果</view>
+      <view wx:if="{{item.reviewStatus===1}}" style='color:red'>已通过</view>
+      <view wx:elif='{{item.reviewStatus===2}}' style='color:green'>被驳回</view>
+      <view wx:else>待审核</view>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">通过奖励/驳回理由</view>
+      <view wx:if="{{item.reviewStatus===1}}" style='color:red'>获得积分： {{item.credit}}</view>
+      <view wx:else style='color:green;word-break: break-all;'>{{item.rejectReason?item.rejectReason:''}}</view>
+    </view>
+  </view>
+  <view style="text-align:center;margin-bottom:20rpx" hidden="{{!searchLoadingComplete}}">{{pageIndex==1?'暂无爆料':'已加载全部'}}</view>
+</view>

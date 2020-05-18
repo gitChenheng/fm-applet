@@ -1,0 +1,38 @@
+/* pages/my/my.wxss */
+.my_topCon{
+  display: flex;
+  justify-content: space-between;
+  margin:10rpx 0;
+  padding: 10rpx 0;
+}
+.userinfo {
+  vertical-align: middle;
+  display: inline-block;
+}
+.signBtn{
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 35rpx;
+}
+.loginBtn{
+  border: 0;
+  background: #07c160;
+  color: #fff;
+}
+
+.userinfo-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 25rpx;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  font-size: 35rpx;
+  display: inline-block;
+  vertical-align: middle;
+}

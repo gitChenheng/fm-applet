@@ -1,0 +1,73 @@
+<!--pages/detail/detail.wxml-->
+<view class='container'>
+  <view class="detail-content">
+
+    <view class='info_block_view'>
+      <view class="info_block_view_fr">
+        <image wx:if='{{obj.platformImgUrl}}' class='logo info_block_view_img' src="{{requestPrefixed+obj.platformImgUrl}}"></image>
+        <image wx:else class='logo info_block_view_img' src="../../images/logo.png"></image>
+        <view>{{obj.platform}}</view>
+      </view>
+      
+
+      <view class="info_block_view_view">
+        <text style='font-size:37rpx;color:#E7E8E8;font-weight:700'>{{obj.name}}</text>
+        <view class='line'>
+          <view style='font-size:26rpx'><text style='color:#84859B'>{{obj.initiator}}</text></view>
+        </view>
+        <view class='line'>
+          <text style="color:#DDBE91;font-size:20rpx">￥ <text style="font-size:30rpx">{{obj.price}}</text></text>
+          <text>
+            <text
+              class="{{obj.free?'forFree':'notFree'}} radius light"
+            >{{obj.free?'免费参与':'付费参与'}}</text>
+          </text>
+        </view>
+      </view>
+    </view>
+    <view class="cut-off-line"></view>
+    <view class='middle-lv'>
+      <view>
+        <text>开始时间：</text>
+        <text>{{obj.startTime}}</text>
+      </view>
+      <view>
+        <text>结束时间：</text>
+        <text>{{obj.endTime}}</text>
+      </view>
+      <!-- <view>
+        <text>参与方式：</text>
+        <text></text>
+      </view> -->
+    </view>
+    <view class="cut-off-line"></view>
+    <view class='details'>
+      <view style='margin-bottom:20rpx;font-size:30rpx'>爆料详情</view>
+      <text style="color:#8C8CA4" selectable='true'>{{obj.details}}</text>
+    </view>
+    <view class='bottom-lv'>
+      <input 
+        class='comment' name="comment"
+        placeholder="说点什么.."
+        bindinput='inputChange'
+        value='{{inputValue}}'
+        bindconfirm='comment'
+      />
+    </view>
+    <view class="cut-off-line"></view>
+    <view class='bottom' wx:for="{{commentList}}" wx:for-item="item" wx:key="id">
+      <view>
+        <image src='{{item.avatarUrl}}' style='width:100rpx;height:100rpx;border-radius:50rpx'></image>
+      </view>
+      <view>
+        <text class='bottom-name'>{{item.createdName}}：</text>
+        <view class='bottom-content'>{{item.content}}</view>
+        <text class='bottom-time' style='font-size:26rpx'>{{item.createdAt}}</text>
+      </view>
+    </view>
+
+
+
+
+  </view>
+</view>

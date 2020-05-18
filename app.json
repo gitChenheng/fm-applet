@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/basics/basics",
+    "pages/range/range",
+    "pages/score/score",
+    "pages/my/my",
+    "pages/logs/logs",
+    "pages/knock/knock",
+    "pages/konck_ap/konck_ap",
+    "pages/content_mt/content_mt",
+    "pages/my_konck/my_konck",
+    "pages/detail/detail",
+    "pages/icon/icon"
+    
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#151722",
+    "navigationBarBackgroundColor": "#151722",
+    "navigationBarTitleText": "分母加一",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

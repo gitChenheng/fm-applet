@@ -1,0 +1,97 @@
+<view wx:if="{{PageCur=='basics'}}">
+  <button wx:if='{{userInfo.role==1}}' class="lg knock-btn" bindtap='knock'>
+    <image src="../../img/2.png"></image>
+    我要爆料
+  </button>
+  
+  <view id='searchBar' class="cu-bar gl-bg1 search fixed">
+    <view class="search-form round">
+      <!-- <text class="cuIcon-search"></text> -->
+      <input
+        type="text"
+        placeholder="输入搜索的关键词"
+        placeholder-class="search-input-placeholder"
+        class="search-input"
+        data-type='0'
+        bindinput="findInfoConditional"
+      ></input>
+    </view>
+    <view class="action" bindtap="conditionEvent">
+      <view class="search-btn gl-bg2">
+        <image src="../../img/1.png" style="width:28rpx;height:34rpx"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="container" style='margin-top:100rpx;'>
+    <view wx:if='{{condition}}' class="condition-mask" bindtap="maskTapEv">
+    </view>
+    <view wx:if='{{condition}}' class="condition">
+      <view>
+        <view class="condition-title">奖品类型</view>
+        <view class="condition-con">
+          <text data-id='{{null}}' data-type='1' bindtap="findInfoConditional" class="{{typeId===null?'condition-checked':'condition-unchecked'}}">全部</text>
+          <text wx:for="{{typeData}}" wx:for-item="item" wx:key="id" data-id='{{item.id}}' data-type='1' bindtap="findInfoConditional" class="{{typeId==item.id?'condition-checked':'condition-unchecked'}}">{{item.name}}</text>
+        </view>
+      </view>
+      <view>
+        <view class="condition-title">所在平台</view>
+        <view class="condition-con">
+          <text data-id='{{null}}' data-type='2' bindtap="findInfoConditional" class="{{platformId===null?'condition-checked':'condition-unchecked'}}">全部</text>
+          <text wx:for="{{platformData}}" wx:for-item="item" wx:key="id" data-id='{{item.id}}' data-type='2' bindtap="findInfoConditional" class="{{platformId==item.id?'condition-checked':'condition-unchecked'}}">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+    <view enable-back-to-top='true' style="margin:25rpx;width:700rpx;padding-bottom: 100rpx;">
+      <view wx:if='{{!item.ifEnd}}' class='info_block' wx:for="{{info}}" wx:for-item="item" wx:key="id">
+        <image style="position: absolute;width: 100rpx;height: 100rpx;right: 0;top:0" src="../../img/s-{{item.level}}.png"></image>
+        <view class='info_block_view' bindtap='clickEvent' data-id="{{item.id}}">
+          <view class="info_block_view_fr">
+            <image class="info_block_view_img" wx:if='{{item.platformImgUrl}}' src="{{requestPrefixed+item.platformImgUrl}}"></image>
+            <image class="info_block_view_img" wx:else src="../../images/logo.png"></image>
+            <view>{{item.platform}}</view>
+          </view>
+          <view class="info_block_view_view">
+            <text style='font-size:37rpx;color:#E7E8E8;font-weight:700'>{{item.name}}</text>
+            <view class='line'>
+              <view style='font-size:26rpx'><text style='color:#84859B'>{{item.initiator}}</text></view>
+              <view>
+                <view
+                  class="{{item.ifBegin?'started':'notNow'}} radius"
+                >{{item.ifBegin?'已开始':'未开始'}}
+                </view>
+              </view>
+            </view>
+            <view class='line'>
+              <text style="color:#DDBE91;font-size:20rpx">￥ <text style="font-size:30rpx">{{item.price}}</text></text>
+              <text>
+                <text
+                  class="{{item.free?'forFree':'notFree'}} radius light"
+                >{{item.free?'免费参与':'付费参与'}}</text>
+              </text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view style="text-align:center" hidden="{{!searchLoadingComplete}}">{{pageIndex==1?'暂无爆料':'已加载全部'}}</view>
+    </view>
+
+  </view>
+</view>
+
+<!-- nav -->
+<view id='navBar' class="cu-bar tabbar bg-white shadow foot">
+  <navigator open-type='reLaunch' class="action" url="/pages/index/index">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-{{PageCur=='basics'?'homefill':'home'}} lg text-gray"></text>
+    </view>
+    <view class="{{PageCur=='basics'?'text-gray':'text-gray'}}">首页</view>
+  </navigator>
+  <navigator open-type='reLaunch' class="action" url="/pages/my/my">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-{{PageCur=='my'?'peoplefill':'people'}} lg text-gray"></text>
+    </view>
+    <view class="{{PageCur=='my'?'text-gray':'text-gray'}}">我的</view>
+  </navigator>
+</view>
+

@@ -1,0 +1,69 @@
+<header></header>
+<view class='con'>
+  <view class='my_topCon'>
+    <view class="userinfo">
+      <block>
+        <view class="userinfo-avatar" bindtap="bindViewTap">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <text class="userinfo-nickname">{{userInfo.name}}</text>
+      </block>
+    </view>
+    <view wx:if='{{authSettingUserInfo}}' style='display:inline-block;line-height:110rpx'>
+      <button disabled class='cu-btn round' wx:if="{{userInfo.hadSignIn}}">已签到</button>
+      <button wx:else class='cu-btn block bg-black margin-tb-sm lg' bindtap='signUp'>签到</button>
+    </view>
+
+    <view
+      style="display:inline-block;line-height:110rpx"
+      wx:if='{{!authSettingUserInfo}}'
+    >
+      <!-- <open-data type="userAvatarUrl"></open-data>
+      <open-data type="userNickName"></open-data> -->
+      <!-- 需要使用 button 来授权登录 -->
+      <button wx:if="{{canIUse}}" class="loginBtn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+        微信授权登录
+      </button>
+      <view wx:else>请升级微信版本</view>
+    </view>
+
+  </view>
+  <view class="cut-off-line"></view>
+  <view class='my_topCon'>
+    <view>积分：{{userInfo.credit}}</view>
+    <text bindtap='range' class="forFree">积分榜</text>
+  </view>
+  <view class="cut-off-line"></view>
+  <!-- <view class='my_topCon'>
+    <view>签名：{{userInfo.motto}}</view>
+  </view> -->
+  <!-- <view class='my_topCon'>
+    <view>余额：{{userInfo.balance}}</view>
+  </view>
+  <view class="cut-off-line"></view> -->
+  <!-- <view class='my_topCon'>
+    <view>收货地址：</view>
+  </view>
+  <view class="cut-off-line"></view> -->
+  <view class='my_topCon'>
+    <!-- <button bindtap='my_konck' class='cu-btn block bg-black margin-tb-sm lg'>我的爆料</button> -->
+    <button bindtap='knock_ap' wx:if="{{userInfo.role===1}}" class='cu-btn block bg-black margin-tb-sm lg'>爆料审核</button>
+    <button bindtap='content_mt' wx:if="{{userInfo.role===1}}" class='cu-btn block bg-black margin-tb-sm lg'>内容维护</button>
+  </view>
+</view>
+
+<!-- nav -->
+<view class="cu-bar tabbar bg-white shadow foot">
+  <navigator open-type='reLaunch' class="action" url="/pages/index/index">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-{{PageCur=='basics'?'homefill':'home'}} lg text-gray"></text>
+    </view>
+    <view class="{{PageCur=='basics'?'text-gray':'text-gray'}}">首页</view>
+  </navigator>
+  <navigator open-type='reLaunch' class="action" url="/pages/my/my">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-{{PageCur=='my'?'peoplefill':'people'}} lg text-gray"></text>
+    </view>
+    <view class="{{PageCur=='my'?'text-gray':'text-gray'}}">我的</view>
+  </navigator>
+</view>

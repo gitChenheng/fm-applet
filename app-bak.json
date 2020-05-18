@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/range/range",
+    "pages/score/score",
+    "pages/my/my",
+    "pages/logs/logs",
+    "pages/knock/knock",
+    "pages/konck_ap/konck_ap",
+    "pages/content_mt/content_mt",
+    "pages/my_konck/my_konck",
+    "pages/detail/detail",
+    "pages/icon/icon"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "分母",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "custom": true,
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/cxzy-w.png",
+        "selectedIconPath": "img/cxzy-y.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "img/gr-w.png",
+        "selectedIconPath": "img/gr-y.png"
+      }
+    ]
+  }
+}
