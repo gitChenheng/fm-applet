@@ -1,0 +1,14 @@
+<view id='navBar' class="cu-bar tabbar bg-white shadow foot">
+  <navigator open-type='reLaunch' class="action" url="/pages/index/index" hover-class="btn-hover">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-{{pageCur=='basics'?'homefill':'home'}} lg text-gray"></text>
+    </view>
+    <view class="{{pageCur=='basics'?'text-gray':'text-gray'}}">首页</view>
+  </navigator>
+  <navigator open-type='reLaunch' class="action" url="/pages/my/my" hover-class="btn-hover">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-{{pageCur=='my'?'peoplefill':'people'}} lg text-gray"></text>
+    </view>
+    <view class="{{pageCur=='my'?'text-gray':'text-gray'}}">我的</view>
+  </navigator>
+</view>

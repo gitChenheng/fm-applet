@@ -36,3 +36,12 @@
   display: inline-block;
   vertical-align: middle;
 }
+.ques{
+  color: #E6BF72;
+  border: 1px solid #A8986D;
+  background: #484D58;
+  border-radius: 50%;
+  display: inline;
+  padding: 0 8rpx;
+  margin-left: 6rpx;
+}

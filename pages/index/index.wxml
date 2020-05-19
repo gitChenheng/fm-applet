@@ -16,7 +16,7 @@
         bindinput="findInfoConditional"
       ></input>
     </view>
-    <view class="action" bindtap="conditionEvent">
+    <view class="action" bindtap="conditionEvent" hover-class="search-bar-hover">
       <view class="search-btn gl-bg2">
         <image src="../../img/1.png" style="width:28rpx;height:34rpx"></image>
       </view>
@@ -43,7 +43,12 @@
       </view>
     </view>
     <view enable-back-to-top='true' style="margin:25rpx;width:700rpx;padding-bottom: 100rpx;">
-      <view wx:if='{{!item.ifEnd}}' class='info_block' wx:for="{{info}}" wx:for-item="item" wx:key="id">
+      <view
+        wx:if='{{!item.ifEnd}}'
+        class='info_block' wx:for="{{info}}"
+        wx:for-item="item" wx:key="id"
+        hover-class="btn-hover"
+      >
         <image style="position: absolute;width: 100rpx;height: 100rpx;right: 0;top:0" src="../../img/s-{{item.level}}.png"></image>
         <view class='info_block_view' bindtap='clickEvent' data-id="{{item.id}}">
           <view class="info_block_view_fr">
@@ -78,20 +83,4 @@
 
   </view>
 </view>
-
-<!-- nav -->
-<view id='navBar' class="cu-bar tabbar bg-white shadow foot">
-  <navigator open-type='reLaunch' class="action" url="/pages/index/index">
-    <view class='cuIcon-cu-image'>
-      <text class="cuIcon-{{PageCur=='basics'?'homefill':'home'}} lg text-gray"></text>
-    </view>
-    <view class="{{PageCur=='basics'?'text-gray':'text-gray'}}">首页</view>
-  </navigator>
-  <navigator open-type='reLaunch' class="action" url="/pages/my/my">
-    <view class='cuIcon-cu-image'>
-      <text class="cuIcon-{{PageCur=='my'?'peoplefill':'people'}} lg text-gray"></text>
-    </view>
-    <view class="{{PageCur=='my'?'text-gray':'text-gray'}}">我的</view>
-  </navigator>
-</view>
-
+<nav pageCur="basics"></nav>

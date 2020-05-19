@@ -30,8 +30,8 @@
   </view>
   <view class="cut-off-line"></view>
   <view class='my_topCon'>
-    <view>积分：{{userInfo.credit}}</view>
-    <text bindtap='range' class="forFree">积分榜</text>
+    <view>积分：{{userInfo.credit}} <view class="ques" hover-class="btn-hover">?</view></view>
+    <view bindtap='range' class="forFree" hover-class="btn-hover">积分榜</view>
   </view>
   <view class="cut-off-line"></view>
   <!-- <view class='my_topCon'>
@@ -53,17 +53,4 @@
 </view>
 
 <!-- nav -->
-<view class="cu-bar tabbar bg-white shadow foot">
-  <navigator open-type='reLaunch' class="action" url="/pages/index/index">
-    <view class='cuIcon-cu-image'>
-      <text class="cuIcon-{{PageCur=='basics'?'homefill':'home'}} lg text-gray"></text>
-    </view>
-    <view class="{{PageCur=='basics'?'text-gray':'text-gray'}}">首页</view>
-  </navigator>
-  <navigator open-type='reLaunch' class="action" url="/pages/my/my">
-    <view class='cuIcon-cu-image'>
-      <text class="cuIcon-{{PageCur=='my'?'peoplefill':'people'}} lg text-gray"></text>
-    </view>
-    <view class="{{PageCur=='my'?'text-gray':'text-gray'}}">我的</view>
-  </navigator>
-</view>
+<nav pageCur="my"></nav>

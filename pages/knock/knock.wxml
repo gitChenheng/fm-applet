@@ -7,23 +7,23 @@
       <input name="title" placeholder="请输入标题"/>
     </view> -->
     <view class='knock_section'>
-      <label class='knock_label'>奖品：</label>
+      <label class='knock_label'>奖品<text class="asterisk">*</text>：</label>
       <input name="name" placeholder="请输入奖品内容"/>
     </view>
     <view class='knock_section'>
-      <label class='knock_label'>金主：</label>
+      <label class='knock_label'>金主<text class="asterisk">*</text>：</label>
       <input name="initiator" placeholder="请输入金主名称"/>
     </view>
     <view class="knock_section">
       <picker name='typeId' bindchange="bindTypeChange" value="{{typeIdx}}" range="{{typeData}}" range-key='name'>
-        <label class='knock_label'>类别：</label>
+        <label class='knock_label'>类别<text class="asterisk">*</text>：</label>
         <text class="knock_placecholder" wx:if="{{typeIdx===null}}">点击此处选择类别</text>
         <view class="picker" wx:else>{{typeData[typeIdx].name}}</view>
       </picker>
     </view>
     <view class="knock_section">
       <picker name="platformId" bindchange="bindPlatformChange" value="{{platformIdx}}" range="{{platformData}}" range-key="name">
-        <label class='knock_label'>平台：</label>
+        <label class='knock_label'>平台<text class="asterisk">*</text>：</label>
         <text class="knock_placecholder" wx:if="{{platformIdx===null}}">点击此处选择平台</text>
         <view class="picker" wx:else>{{platformData[platformIdx].name}}</view>
       </picker>
@@ -34,7 +34,7 @@
     </view>
     <view class='knock_section'>
       <picker name="startTime" mode="date" bindchange='bindStartTimeChange' value="{{startTime}}" start="{{today}}" end="{{endTime===''?'':endTime}}">
-        <label class='knock_label'>开始时间：</label>
+        <label class='knock_label'>开始时间<text class="asterisk">*</text>：</label>
         <text class="knock_placecholder" wx:if="{{startTime===''}}">请选择活动开始时间</text>
         <view class="picker" wx:else>{{startTime}}</view>
       </picker>
@@ -45,7 +45,7 @@
     </view>
     <view class='knock_section'>
       <picker name="endTime" mode="date" bindchange='bindEndTimeChange' value="{{endTime}}" start="{{startTime===''?today:startTime}}">
-        <label class='knock_label'>结束时间：</label>
+        <label class='knock_label'>结束时间<text class="asterisk">*</text>：</label>
         <text class="knock_placecholder" wx:if="{{endTime===''}}">请选择活动结束时间</text>
         <view class="picker" wx:else>{{endTime}}</view>
       </picker>

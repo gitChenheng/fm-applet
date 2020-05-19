@@ -1,5 +1,6 @@
 import { post } from '../../utils/request.js';
 import config from '../../config/config.js';
+import {setStore,removeStore, getStore} from '../../utils/storage';
 const app = getApp();
 const pageSize=10;
 let t;
@@ -22,31 +23,15 @@ Page({
     userInfo:{},
     shareInfo:{},
   },
-  onReachBottom: function () {
-    if (this.data.searchLoadingComplete) {
-      return;
-    }
-    this.setData({
-      pageIndex: ++this.data.pageIndex,
-    }, () => {
-      this.findInfoConditionalEvent()
-    })
-  },
   onLoad:function(){
     let pages = getCurrentPages();
     let shareInfo=pages[pages.length - 1]['options'];
-    this.setData({
-      shareInfo
-    })
-    console.log('pr',shareInfo);
-    // wx.getSystemInfo({
-    //   success: r=> {
-    //     const b = r.windowWidth / 750;
-    //     this.setData({
-    //       height: r.windowHeight - b*250+ "px"
-    //     })
-    //   }
-    // })
+    if(shareInfo.shareId){
+      setStore('shareId',shareInfo.shareId);
+    }else{
+      removeStore('shareId');
+    }
+
     this.findInfoConditionalEvent();
     post({
       url: '/api/admin/getAllListOfAward'
@@ -70,7 +55,7 @@ Page({
       url: '/api/getUserInfo'
     }).then(r => {
       wx.hideLoading();
-      if (r.code == 1) {
+      if (r&&r.code == 1) {
         let userInfo = r.data;
         this.setData({ userInfo });
       }
@@ -174,11 +159,20 @@ Page({
   bindgetuserinfo(e) {
     console.log('info',e)
   },
-  
   //爆料
   knock:function(){
     wx.navigateTo({
       url: '../knock/knock'
+    })
+  },
+  onReachBottom: function () {
+    if (this.data.searchLoadingComplete) {
+      return;
+    }
+    this.setData({
+      pageIndex: ++this.data.pageIndex,
+    }, () => {
+      this.findInfoConditionalEvent()
     })
   },
   onPullDownRefresh:function(){
@@ -196,26 +190,16 @@ Page({
   },
   NavChange(e) {
     let data = e.currentTarget.dataset;
-    console.log(e.currentTarget.dataset)
-    
-
-    // this.setData({
-    //   PageCur: e.currentTarget.dataset.cur
-    // })
     wx.navigateTo({
       url: data.cur,
     })
   },
   onShareAppMessage: function(e) {
-    // let users = wx.getStorageSync('user');
-    console.log('e',e)
-    if (e.from === 'menu') {
-
-    }
+    if (e.from === 'menu') {}
     if (e.from === 'button') {}
     return {
       title: '转发',
-      path: `/pages/index/index?shareCode=shareCode&id=${this.data.userInfo.id}`,
+      path: `/pages/index/index?shareId=${this.data.userInfo.id}`,
       success: function(res) {
         console.log('success',res);
       }

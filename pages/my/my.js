@@ -1,12 +1,11 @@
 import { post } from '../../utils/request.js';
+import {setStore,removeStore, getStore} from '../../utils/storage';
 const app = getApp();
 
 Page({
   data: {
     authSettingUserInfo:true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
-    PageCur: 'my',
     userInfo: {},
   },
   bindGetUserInfo:function(e){
@@ -14,6 +13,14 @@ Page({
     this.onShow();
   },
   onLoad: function (options) {
+    let pages = getCurrentPages();
+    let shareInfo=pages[pages.length - 1]['options'];
+    if(shareInfo.shareId){
+      setStore('shareId',shareInfo.shareId);
+    }else{
+      removeStore('shareId');
+    }
+
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
@@ -23,7 +30,6 @@ Page({
         }
       }
     });
-
     this.getUserInfo()
   },
   getUserInfo:function(){
@@ -32,11 +38,11 @@ Page({
       url: '/api/getUserInfo'
     }).then(r => {
       wx.hideLoading();
-      if (r.code == 1) {
+      if (r&&r.code == 1) {
         let userInfo = r.data;
         this.setData({ userInfo });
       } else {
-        wx.showToast({
+        r&&r.msg&&wx.showToast({
           title: r.msg,
           icon:'none'
         })
@@ -59,9 +65,6 @@ Page({
 
   },
   onReachBottom: function () {
-
-  },
-  onShareAppMessage: function () {
 
   },
   //事件处理函数
@@ -109,5 +112,16 @@ Page({
     wx.navigateTo({
       url: '../my_konck/my_konck'
     })
+  },
+  onShareAppMessage: function(e) {
+    if (e.from === 'menu') {}
+    if (e.from === 'button') {}
+    return {
+      title: '转发',
+      path: `/pages/index/index?shareId=${this.data.userInfo.id}`,
+      success: function(res) {
+        console.log('success',res);
+      }
+    }
   }
 })

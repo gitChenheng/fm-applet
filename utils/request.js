@@ -1,4 +1,5 @@
 import config from '../config/config.js';
+import {setStore,getStore,removeStore} from '../utils/storage';
 const app = getApp();
 
 const request=function(opt){
@@ -29,7 +30,6 @@ export const post=(opt)=>request(opt).then(r => {
     }else{
       wx.getSetting({
         success: res => {
-          console.log(res)
           if (res.authSetting['scope.userInfo']) {
             // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
             wx.getUserInfo({
@@ -40,6 +40,10 @@ export const post=(opt)=>request(opt).then(r => {
                 wx.login({
                   success: loginRes => {
                     if (loginRes.errMsg == 'login:ok') {
+                      const shareId=getStore('shareId');
+                      if(shareId){
+                        userInfoObj.shareId=shareId
+                      }
                       request({
                         url: '/api/login',
                         data: {
@@ -48,8 +52,9 @@ export const post=(opt)=>request(opt).then(r => {
                         }
                       }).then(res => {
                         let d = res.data;
-                        if (d.code == 1) {
-                          wx.setStorageSync('token', d.data.token);
+                        if (d&&d.code == 1) {
+                          setStore('token',d.data.token);
+                          removeStore('shareId');
                           app.globalData.loginFlag = false;
                           if (getCurrentPages().length != 0) {
                             //刷新当前页面的数据

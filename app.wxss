@@ -81,3 +81,21 @@ view{
 .cu-form-group{
   color: #000
 }
+
+.asterisk{
+  color: red;
+  width: 20rpx;
+  height: 20rpx;
+  display: inline-block;
+  font-size: 40rpx;
+  vertical-align: -8rpx;
+}
+.btn-hover{
+  position: relative;
+  top: 3rpx;
+  box-shadow:0px 0px 8px #999 inset; 
+}
+.search-bar-hover{
+  position: relative;
+  top: 3rpx;
+}

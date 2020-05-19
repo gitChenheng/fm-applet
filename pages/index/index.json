@@ -1,7 +1,8 @@
 {
   "usingComponents": {
-    "basics": "../../pages/basics/basics",
-    "my": "../../pages/my/my"
+    "nav": "/components/nav/nav",
+    "basics": "/pages/basics/basics",
+    "my": "/pages/my/my"
   },
   "enablePullDownRefresh":false
 }
