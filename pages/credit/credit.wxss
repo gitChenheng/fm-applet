@@ -1,0 +1,71 @@
+.tabCon{
+  padding: 20rpx 50rpx;
+}
+.gameBox{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  height: 650rpx;
+}
+.gameBox>view{
+  width: 216rpx;
+  height:216rpx;
+}
+.gameBlock{
+  background: gray;
+  color: #000;
+  text-align: center;
+  line-height: 216rpx;
+}
+.gameCurr{
+  background: #4684FD;
+  color: #fff;
+}
+.gameBox>view:nth-child(4){
+  position: absolute;
+  right: 2rpx;
+  top: 216rpx;
+}
+.gameBox>view:nth-child(5){
+  position: absolute;
+  right: 2rpx;
+  top: 432rpx;
+}
+.gameBox>view:nth-child(6){
+  position: absolute;
+  right: 218rpx;
+  top: 432rpx;
+}
+.gameBox>view:nth-child(7){
+  position: absolute;
+  left: 0;
+  top: 432rpx;
+}
+.gameBox>view:nth-child(8){
+  position: absolute;
+  left: 0;
+  top: 216rpx;
+}
+
+.achCon{
+  margin:20rpx;
+  border: 1px solid #fff;
+  border-radius: 6rpx;
+  padding: 4rpx;
+}
+.achN{
+  font-size: 30rpx;
+}
+.achT{
+  font-size: 24rpx;
+  text-indent: 30rpx;
+}
+.achP{
+  font-size: 26rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.achP>view:last-child{
+  margin-right: 5rpx;
+}

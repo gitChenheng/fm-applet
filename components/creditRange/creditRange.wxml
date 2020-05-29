@@ -1,0 +1,19 @@
+<view class='rangecon'>
+  <view class='info_block'>
+    <text>名次</text>
+    <text class='range_con_text1'></text>
+    <text class='range_con_text2'>积分</text>
+  </view>
+  <view class='info_block' wx:for="{{rangeData}}" wx:for-item="item" wx:key="index">
+    <view class="range_con_view1 flex-center">
+    <view class="range-serial">{{index+1}}</view>
+    <view class="flex-center range_con_view2">
+      <image class="range_con_avat" src='{{item.avatarUrl}}'></image>
+      <text class='range_con_text1 ellipsis'>{{item.name}}</text>
+    </view>
+    </view>
+    <text class='range_con_text2'>{{item.credit}}</text>
+  </view>
+  <view wx:if="{{myPosi}}" class="myPosi">我的名次：{{myPosi}}</view>
+  <view wx:else class="myPosi">100名之外,继续努力～</view>
+</view>

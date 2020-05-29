@@ -9,9 +9,64 @@ Page({
     typeData:[],
     type:'',
     platform:'',
+    achData:[],
+    achname:'',
+    achpoint:'',
+    achpoint:'',
   },
   typeinput:function(e){
     this.setData({ type: e.detail.value})
+  },
+  achnameinput:function(e){
+    this.setData({ achname: e.detail.value})
+  },
+  achpointinput:function(e){
+    this.setData({ achpoint: e.detail.value})
+  },
+  achdetailinput:function(e){
+    this.setData({ achdetail: e.detail.value})
+  },
+  addach:function () {
+    post({
+      url: '/api/admin/addAch',
+      data: { name: this.data.achname,point:this.data.achpoint,conditions:this.data.achdetail }
+    }).then(r => {
+      if (r.code == 1) {
+        this.setData({ achname:'',achpoint:'',achdetail:'' })
+        this.init();
+      } else {
+        wx.showToast({
+          title: r.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  reachieve:function (e) {
+    wx.showModal({
+      title: '',
+      content: '确认删除？',
+      success: res => {
+        if (res.confirm) {
+          var pr = e.currentTarget.dataset;
+          post({
+            url: '/api/admin/delAch',
+            data: { id: e.currentTarget.dataset.value }
+          }).then(r => {
+            if (r.code == 1) {
+              this.init();
+            } else {
+              wx.showToast({
+                title: r.msg,
+                icon: 'none'
+              })
+            }
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
   },
   addtype: function () {
     post({
@@ -148,6 +203,7 @@ Page({
           typeData: d.typeData,
           platformData: d.platformData,
           methodData: d.methodData,
+          achData:d.achieveData,
         })
       } else {
         wx.showToast({

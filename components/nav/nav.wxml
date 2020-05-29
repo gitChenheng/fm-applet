@@ -5,6 +5,12 @@
     </view>
     <view class="{{pageCur=='basics'?'text-gray':'text-gray'}}">首页</view>
   </navigator>
+  <navigator open-type='reLaunch' class="action" url="/pages/credit/credit" hover-class="btn-hover">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-{{pageCur=='credit'?'presentfill':'present'}} lg text-gray"></text>
+    </view>
+    <view class="{{pageCur=='basics'?'text-gray':'text-gray'}}">积分专区</view>
+  </navigator>
   <navigator open-type='reLaunch' class="action" url="/pages/my/my" hover-class="btn-hover">
     <view class='cuIcon-cu-image'>
       <text class="cuIcon-{{pageCur=='my'?'peoplefill':'people'}} lg text-gray"></text>

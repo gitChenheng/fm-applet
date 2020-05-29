@@ -10,7 +10,6 @@
   bindinput='typeinput'
   value="{{type}}"
 />
-
 <button class='cu-btn round bg-black lg' bindtap='addtype' data-value="{{item.value}}">添加</button>
 <text>\n\n</text>
 
@@ -42,3 +41,20 @@
   value="{{platform}}"
 />
 <button class='cu-btn round bg-black lg' bindtap='addplatform' data-value="{{item.id}}">添加</button>
+<text>\n\n</text>
+
+<!-- 成就列表:
+<view class='info_block' wx:for="{{achData}}" wx:for-item="item" wx:key="index">
+  <view class=''>
+    <text class="div">名称：{{item.name}}</text>
+    <text class="inline-div">成就点数：{{item.point}}</text><br/>
+    <view>达成条件：{{item.conditions}}</view>
+    <button class='cu-btn round bg-black' bindtap='reachieve' data-value="{{item.id}}">删除</button>
+  </view>
+</view>
+<input class='input' name="achname" placeholder="请输入成就名称" value="{{achname}}" bindinput='achnameinput'/>
+<input class='inline-input' name="achpoint" placeholder="请输入成就点数" value="{{achpoint}}" bindinput='achpointinput'/>
+<textarea class='achdetail' name="achdetail" placeholder="请输入成就条件" value="{{achdetail}}" bindinput='achdetailinput'>
+</textarea>
+<button class='cu-btn round bg-black lg' bindtap='addach' data-value="{{item.value}}">添加</button>
+<text>\n\n</text> -->

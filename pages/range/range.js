@@ -3,26 +3,27 @@ const app = getApp();
 
 Page({
   data: {
-    rangeData:[],
+    // rangeData:[],
   },
   onLoad: function (options) {
 
   },
   onReady: function () {
-    
+    this.creditRange=this.selectComponent('#creditRange');
+    this.creditRange.getRangeOfCredit();
   },
   onShow: function () {
-    post({
-      url: '/api/getRangesByCredit'
-    }).then(r => {
-      if (r.code == 1) {
-        this.setData({ rangeData: r.data })
-      } else {
-        wx.showToast({
-          title: r.msg,
-        })
-      }
-    })
+    // post({
+    //   url: '/api/getRangesByCredit'
+    // }).then(r => {
+    //   if (r.code == 1) {
+    //     this.setData({ rangeData: r.data })
+    //   } else {
+    //     wx.showToast({
+    //       title: r.msg,
+    //     })
+    //   }
+    // })
   },
   onHide: function () {
 

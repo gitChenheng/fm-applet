@@ -7,6 +7,8 @@ Page({
     authSettingUserInfo:true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: {},
+    achieveData:[],
+    achPoint:0
   },
   bindGetUserInfo:function(e){
     this.onLoad();
@@ -41,12 +43,53 @@ Page({
       if (r&&r.code == 1) {
         let userInfo = r.data;
         this.setData({ userInfo });
+        if(userInfo.achieve){
+          post({
+            url: '/api/findAch'
+          }).then(r => {
+            wx.hideLoading();
+            if (r&&r.code == 1) {
+              const achArr=r.data;
+              const has_achArr=userInfo.achieve.split(',');
+              let lastArr=[],achPoint=0;
+              has_achArr.forEach(it => {
+                for (let i = 0; i < achArr.length; i++) {
+                  const element = achArr[i];
+                  if(String(achArr[i].id)===it){
+                    lastArr.push(achArr[i]);
+                    achPoint+=achArr[i].point;
+                    break;
+                  }
+                }
+              });
+              this.setData({achieveData:lastArr,achPoint});
+            } else {
+              r&&r.msg&&wx.showToast({
+                title: r.msg,
+                icon:'none'
+              })
+            }
+          })
+        }
       } else {
         r&&r.msg&&wx.showToast({
           title: r.msg,
           icon:'none'
         })
       }
+    })
+  },
+  quesEv:function(e){
+    this.showModal(e)
+  },
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
     })
   },
   onReady: function () {

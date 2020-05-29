@@ -2,14 +2,4 @@
 <header></header>
 <view class='title'>积分榜单</view>
 <view class='hr'></view>
-<view class='con'>
-  <view class='info_block'>
-    <text class='range_con_text1'>名称</text>
-    <text class='range_con_text2'>积分</text>
-  </view>
-  <view class='info_block' wx:for="{{rangeData}}" wx:for-item="item" wx:key="index">
-    <text class='range_con_text1'>{{item.name}}</text>
-    <text class='range_con_text2'>{{item.credit}}</text>
-  </view>
-</view>
-
+<creditRange id='creditRange'></creditRange>

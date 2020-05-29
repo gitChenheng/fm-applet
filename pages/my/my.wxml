@@ -30,8 +30,21 @@
   </view>
   <view class="cut-off-line"></view>
   <view class='my_topCon'>
-    <view>积分：{{userInfo.credit}} <view class="ques" hover-class="btn-hover">?</view></view>
+    <view>积分：{{userInfo.credit}} <view class="ques" hover-class="btn-hover" bindtap="showModal" data-target="Modal">?</view></view>
     <view bindtap='range' class="forFree" hover-class="btn-hover">积分榜</view>
+  </view>
+  <view class="cut-off-line"></view>
+  <view class='my_topCon'>
+    <view>成就：{{achPoint}}
+      <view wx:if='{{achieveData.length}}' style="padding:10rpx 0">
+        <text
+          class="{{item.point<=5?'ach-block-l1':item.point>10&&item.point<=20?'ach-block-l3':item.point>10?'ach-block-l4':'ach-block-l2'}}" wx:for='{{achieveData}}'
+          wx:for-item="item" wx:key="id"
+        >{{item.name}}</text>
+      </view>
+      <view wx:else>暂无成就</view>
+    </view>
+    <!-- <view bindtap='range_achieve' class="ach-range" hover-class="btn-hover">成就榜</view> -->
   </view>
   <view class="cut-off-line"></view>
   <!-- <view class='my_topCon'>
@@ -49,6 +62,29 @@
     <!-- <button bindtap='my_konck' class='cu-btn block bg-black margin-tb-sm lg'>我的爆料</button> -->
     <button bindtap='knock_ap' wx:if="{{userInfo.role===1}}" class='cu-btn block bg-black margin-tb-sm lg'>爆料审核</button>
     <button bindtap='content_mt' wx:if="{{userInfo.role===1}}" class='cu-btn block bg-black margin-tb-sm lg'>内容维护</button>
+  </view>
+</view>
+
+
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">关于积分</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-black"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <text style="text-align:left;display: inline-block;">
+        概述：积分是由用户参与该平台的各项日常活动中获得的奖励，当前积分靠前的用户将会以排名的形式展示在积分榜；积分的奖品兑换等使用途径仍在开发中。\n
+        获取途径：\n
+        签到：每日在该平台的签到可获得一定积分奖励，连续签到将会获得更多积分奖励。\n
+        爆料：点击该平台首页按钮进行的抽奖爆料，在经过平台审核通过后，可根据爆料评级获取一定积分奖励，三星爆料将获得可观积分奖励。\n
+        邀请新人：将该平台分享给好友，在好友点击该平台后，将获得大量积分奖励。\n
+        转盘：点击积分专区体验积分转盘，可凭借您的运气获得或损失一定积分（投机需谨慎）。\n
+        <!-- 成就：完成积分专区的指定成就后，可获得一定对应积分奖励，高级成就将获得可观积分奖励。\n -->
+      </text>
+    </view>
   </view>
 </view>
 

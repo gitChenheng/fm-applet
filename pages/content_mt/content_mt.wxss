@@ -14,13 +14,42 @@
 }
 .input{
   display: inline-block;
-border: 1rpx solid #fff;
-width: 400rpx;
-color: #fff;
-height: 80rpx;
-line-height: 80rpx;
-vertical-align: middle;
-
+  border: 1rpx solid #fff;
+  width: 400rpx;
+  color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  vertical-align: middle;
+}
+.div{
+  display: inline-block;
+  width: 400rpx;
+  color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  vertical-align: middle;
+}
+.inline-input{
+  width: 200rpx;
+  display: inline-block;
+  border: 1rpx solid #fff;
+  color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  vertical-align: middle;
+}
+.inline-div{
+  width: 200rpx;
+  display: inline-block;
+  color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  vertical-align: middle;
+}
+.achdetail{
+  display: inline-block;
+  border: 1rpx solid #fff;
+  color: #fff;
 }
 .flex>image{
   width:200rpx;

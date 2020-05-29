@@ -1,7 +1,6 @@
 import { post } from '../../utils/request.js';
 import config from '../../config/config.js';
 import {setStore,removeStore, getStore} from '../../utils/storage';
-const app = getApp();
 const pageSize=10;
 let t;
 Page({
@@ -24,6 +23,9 @@ Page({
     shareInfo:{},
   },
   onLoad:function(){
+    // wx.navigateTo({
+    //   url: '/pages/credit/credit',
+    // })
     let pages = getCurrentPages();
     let shareInfo=pages[pages.length - 1]['options'];
     if(shareInfo.shareId){

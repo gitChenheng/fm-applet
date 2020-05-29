@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/basics/basics",
     "pages/range/range",
-    "pages/score/score",
     "pages/my/my",
     "pages/logs/logs",
     "pages/knock/knock",
@@ -11,6 +10,7 @@
     "pages/content_mt/content_mt",
     "pages/my_konck/my_konck",
     "pages/detail/detail",
+    "pages/credit/credit",
     "pages/icon/icon"
     
     
