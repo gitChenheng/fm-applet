@@ -54,7 +54,6 @@ Page({
               let lastArr=[],achPoint=0;
               has_achArr.forEach(it => {
                 for (let i = 0; i < achArr.length; i++) {
-                  const element = achArr[i];
                   if(String(achArr[i].id)===it){
                     lastArr.push(achArr[i]);
                     achPoint+=achArr[i].point;

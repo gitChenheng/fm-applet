@@ -1,0 +1,30 @@
+.rangecon{
+  padding: 20rpx 50rpx;
+}
+.info_block{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.range_con_avat{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.range_con_text1{
+  width: 150rpx;
+  margin-left: 20rpx;
+}
+.range_con_text1,.range_con_text2{
+  display: inline-block;
+  vertical-align: middle;
+}
+.range_con_view2{
+  margin-left: 30rpx;
+}
+.myPosi{
+  margin-top: 50rpx;
+  float: right;
+}

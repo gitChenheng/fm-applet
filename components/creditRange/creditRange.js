@@ -33,6 +33,13 @@ Component({
           })
         }
       })
-    }
+    },
+    personal:function(e){
+      const id=e.currentTarget.dataset.item.id;
+      wx.navigateTo({
+        url: `/pages/personal/personal?id=${id}`,
+      })
+
+    },
   }
 })

@@ -1,11 +1,10 @@
 import config from './config/config.js';
-const updateManager = wx.getUpdateManager()
-
+const updateManager = wx.getUpdateManager();
 App({
   onLaunch: function () {
     updateManager.onCheckForUpdate(function (res) {
       // 请求完新版本信息的回调
-      console.log(res.hasUpdate)
+      // console.log(res.hasUpdate)
     })
     updateManager.onUpdateReady(function () {
       wx.showModal({

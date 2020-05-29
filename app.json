@@ -4,6 +4,7 @@
     "pages/basics/basics",
     "pages/range/range",
     "pages/my/my",
+    "pages/personal/personal",
     "pages/logs/logs",
     "pages/knock/knock",
     "pages/konck_ap/konck_ap",
@@ -12,8 +13,6 @@
     "pages/detail/detail",
     "pages/credit/credit",
     "pages/icon/icon"
-    
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
