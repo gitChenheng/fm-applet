@@ -25,10 +25,10 @@ Component({
       post({
         url: '/api/getRangesByCredit'
       }).then(r => {
-        if (r.code == 1) {
+        if (r&&r.code == 1) {
           this.setData({ rangeData: r.data.creditRange,myPosi:r.data.myPosi })
         } else {
-          wx.showToast({
+          r&&r.msg&&wx.showToast({
             title: r.msg,
           })
         }

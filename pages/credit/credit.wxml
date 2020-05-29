@@ -41,8 +41,12 @@
   </view>
   <view wx:if="{{TabCur==1}}" class="tabCon">
     <view class="flex-between">
-      <view>我的积分：{{userInfo.credit}}</view>
-      <button class="cu-btn bg-black margin-tb-sm" bindtap="gameStart">2积分转动一次</button>
+      <view>我的积分：{{userInfo.id?userInfo.credit:'请先授权登录'}}</view>
+      <button
+        disabled="{{!userInfo.id}}"
+        class="cu-btn bg-black margin-tb-sm"
+        bindtap="gameStart"
+      >2积分转动一次</button>
     </view>
     <view class="gameBox">
       <view wx:for="{{gameBlock}}" wx:key="index">
@@ -54,7 +58,7 @@
   </view>
   <view wx:if="{{TabCur==2}}" class="tabCon">
     成就一览：
-    <view wx:for='{{achArr}}' wx:key='id' class="achCon">
+    <view wx:if='{{userInfo.id}}' wx:for='{{achArr}}' wx:key='id' class="achCon">
       <view class="achN">
         {{item.name}}
       </view>
@@ -66,6 +70,7 @@
         <view>成就点数：{{item.point}}</view>
       </view>
     </view>
+    <view wx:if='{{!userInfo.id}}' class="tabCon">请先授权登录</view>
   </view>
   <view wx:if="{{TabCur==3}}" class="tabCon">
     <view>
