@@ -59,7 +59,6 @@ Page({
   onReachBottom: function () {
 
   },
-  onShareAppMessage: function () {},
   formSubmit:function(e){
     var obj = e.detail.value;
     if (!obj.name) {
