@@ -4,6 +4,7 @@ import dateTimePicker from '../../lib/dateTimePicker.js';
 const app = getApp();
 Page({
   data: {
+    requestPrefixed: config.requestPrefixed,
     typeIdx:null,
     typeData:[],
     platformIdx:null,
@@ -12,6 +13,7 @@ Page({
     endTime:'',
     // today: new Date().toLocaleDateString(),
     today: '',
+    imgs:'',
   },
   bindTypeChange:function(e){
     this.setData({ typeIdx: e.detail.value})
@@ -58,6 +60,55 @@ Page({
   },
   onReachBottom: function () {
 
+  },
+  upload:function(event){
+    var _this=this;
+    wx.chooseImage({
+      count:1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths;
+        //启动上传等待中...
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 10000
+        })
+        wx.uploadFile({
+          url: config.requestPrefixed + '/api/uploadInfoImg',
+          filePath: tempFilePaths[0],
+          name: 'file',
+          header: {
+            "Content-Type": "multipart/form-data",
+            'token': wx.getStorageSync('token'),
+          },
+          formData: {},
+          success: function (res) {
+            let data = JSON.parse(res.data);
+            if (data.code === '1') {
+              wx.hideToast();
+              wx.showToast({
+                title: '上传成功',
+              })
+              _this.setData({imgs:data.data});
+            }else{
+              wx.showToast({
+                title: '上传失败',
+                icon:'none'
+              })
+            }
+            // var data = JSON.parse(res.data);
+            //服务器返回格式: { "Catalog": "testFolder", "FileName": "1.jpg", "Url": "https://test.com/1.jpg" }
+
+          },
+        })
+      },
+      fail:function(e){
+      }
+    })
   },
   formSubmit:function(e){
     var obj = e.detail.value;
@@ -115,6 +166,7 @@ Page({
     obj.platformId = this.data.platformData[obj.platformId].id;
     obj.startTime+=' 00:00:00';
     obj.endTime += ' 00:00:00';
+    obj.imgs=this.data.imgs;
     post({
       url: '/api/addInfo',
       data:obj

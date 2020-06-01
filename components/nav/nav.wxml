@@ -1,17 +1,17 @@
 <view id='navBar' class="cu-bar tabbar bg-white shadow foot">
-  <navigator open-type='reLaunch' class="action" url="/pages/index/index" hover-class="btn-hover">
+  <navigator open-type='reLaunch' class="action" url="/pages/index/index">
     <view class='cuIcon-cu-image'>
       <text class="cuIcon-{{pageCur=='basics'?'homefill':'home'}} lg text-gray"></text>
     </view>
     <view class="{{pageCur=='basics'?'text-gray':'text-gray'}}">首页</view>
   </navigator>
-  <navigator open-type='reLaunch' class="action" url="/pages/credit/credit" hover-class="btn-hover">
+  <navigator open-type='reLaunch' class="action" url="/pages/credit/credit">
     <view class='cuIcon-cu-image'>
       <text class="cuIcon-{{pageCur=='credit'?'presentfill':'present'}} lg text-gray"></text>
     </view>
     <view class="{{pageCur=='basics'?'text-gray':'text-gray'}}">积分专区</view>
   </navigator>
-  <navigator open-type='reLaunch' class="action" url="/pages/my/my" hover-class="btn-hover">
+  <navigator open-type='reLaunch' class="action" url="/pages/my/my">
     <view class='cuIcon-cu-image'>
       <text class="cuIcon-{{pageCur=='my'?'peoplefill':'people'}} lg text-gray"></text>
     </view>

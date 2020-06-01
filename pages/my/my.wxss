@@ -53,3 +53,9 @@
   background: #484D58;
   height: 46rpx;
 }
+.continueSign{
+  font-size: 20rpx;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}

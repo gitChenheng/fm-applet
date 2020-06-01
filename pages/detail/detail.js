@@ -61,7 +61,7 @@ Page({
       url: '/api/addComment',
       data: { 
         infoId: this.data.infoId,
-        content: this.data.inputValue  
+        content: this.data.inputValue
       },
     }).then(r => {
       if (r.code == 1) {
@@ -74,6 +74,19 @@ Page({
         })
       }
     })
+  },
+  copy:function(){
+    var _this = this;
+    console.log(this.data.obj.link)
+    wx.setClipboardData({
+      //去找上面的数据
+      data: _this.data.obj.link,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+        });
+      }
+    });
   },
   onReady: function () {
 

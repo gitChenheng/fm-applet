@@ -51,6 +51,20 @@
       </picker>
     </view>
     <view class='knock_section'>
+      <label class='knock_label'>链接：</label>
+      <input name="link" type="text" placeholder="请输入链接地址"/>
+    </view>
+    <view class='knock_section'>
+      <label class='knock_label' style="vertical-align:top">图片：</label>
+      <image wx:if='{{url}}' class="uploadImg" src="{{requestPrefixed+url}}" bindtap='upload'></image>
+      <button
+        wx:else
+        class="cu-btn bg-black margin-tb-sm"
+        bindtap='upload'
+      >上传图片</button>
+    </view>
+    
+    <view class='knock_section'>
       <label class='knock_label'>备注：</label>
       <!-- <input name="remarks" placeholder="请输入备注"/> -->
       <textarea name="details" placeholder="请输入备注"></textarea>

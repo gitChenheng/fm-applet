@@ -3200,7 +3200,7 @@ scroll-view.cu-steps .cu-item {
 }
 
 .padding-xl {
-	padding: 50rpx;
+	padding: 0 50rpx;
 	color: #333;
 }
 

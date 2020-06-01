@@ -10,8 +10,9 @@
       </block>
     </view>
     <view wx:if='{{authSettingUserInfo}}' style='display:inline-block;line-height:110rpx'>
-      <button disabled class='cu-btn round' wx:if="{{userInfo.hadSignIn}}">已签到</button>
+      <button wx:if="{{userInfo.hadSignIn}}" disabled class='cu-btn round'>已签到</button>
       <button wx:else class='cu-btn block bg-black margin-tb-sm lg' bindtap='signUp'>签到</button>
+      <view wx:if="{{userInfo.hadSignIn}}" class="continueSign">已连续签到 {{userInfo.continueSign}} 天</view>
     </view>
 
     <view

@@ -41,6 +41,15 @@
       </view> -->
     </view>
     <view class="cut-off-line"></view>
+    <view class="middle-lv">
+      <view wx:if='{{obj.link}}'>
+        <view class="link" selectable='true'>链接:{{obj.link}}</view>
+        <button bindtap="copy" class="cu-btn bg-black">复制</button>
+      </view>
+      <view wx:else>暂无链接</view>
+      <image wx:if='{{obj.imgs}}' class="uploadImg" src="{{requestPrefixed+obj.imgs}}"></image>
+    </view>
+    <view class="cut-off-line"></view>
     <view class='details'>
       <view style='margin-bottom:20rpx;font-size:30rpx'>爆料详情</view>
       <text style="color:#8C8CA4" selectable='true'>{{obj.details}}</text>
