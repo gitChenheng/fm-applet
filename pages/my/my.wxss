@@ -66,3 +66,14 @@
   min-width: 300rpx;
   border: 1px solid #ddd;
 }
+.msgboard{
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+.msglen{
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+}

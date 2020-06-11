@@ -34,7 +34,6 @@ App({
   },
   globalData: {
     requestPrefixed: config.requestPrefixed,
-    token_expire_time:config.token_expire_time,
     loginFlag:false,
   },
 })

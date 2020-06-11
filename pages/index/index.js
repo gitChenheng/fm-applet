@@ -24,7 +24,7 @@ Page({
   },
   onLoad:function(){
     // wx.navigateTo({
-    //   url: '/pages/credit/credit',
+    //   url: '/pages/my/my',
     // })
     let pages = getCurrentPages();
     let shareInfo=pages[pages.length - 1]['options'];

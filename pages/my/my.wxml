@@ -60,6 +60,22 @@
     <view>收货地址：收货地址：收货地址：收货地址：收货地址：收货地址：</view>
   </view>
   <view class="cut-off-line"></view> -->
+  <view class="my_topCon">
+    <textarea
+      class="msgboard"
+      placeholder="给我们留言,{{maxLen}}字内"
+      maxlength="{{maxLen}}"
+      value="{{msg}}"
+      bindinput='msgboardcg'
+    ><view class="msglen">{{msgLen}}/{{maxLen}}</view>
+    </textarea>
+  </view>
+  <view class="flex-between">
+    <view></view>
+    <button class="cu-btn bg-black margin-tb-sm" bindtap="msgboard">发送留言</button>
+    <!-- <button class="cu-btn bg-black margin-tb-sm">我的留言记录</button> -->
+  </view>
+  <view class="cut-off-line"></view>
   <view class='my_topCon'>
     <!-- <button bindtap='my_konck' class='cu-btn block bg-black margin-tb-sm lg'>我的爆料</button> -->
     <button bindtap='knock_ap' wx:if="{{userInfo.role===1}}" class='cu-btn block bg-black margin-tb-sm lg'>爆料审核</button>

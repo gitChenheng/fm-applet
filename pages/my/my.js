@@ -8,7 +8,10 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: {},
     achieveData:[],
-    achPoint:0
+    achPoint:0,
+    msg:'',
+    msgLen:0,
+    maxLen:100,
   },
   bindGetUserInfo:function(e){
     this.onLoad();
@@ -91,6 +94,32 @@ Page({
   },
   address:function(e){
     console.log(e)
+  },
+  msgboardcg:function (e) {
+    const msg=e.detail.value;
+    const msgLen=e.detail.value.length;
+    this.setData({msg,msgLen});
+  },
+  msgboard:function (e) {
+    const msg=this.data.msg;
+    wx.showLoading()
+    post({
+      url: '/api/addMessageBoard',
+      data:{content:msg}
+    }).then(r => {
+      wx.hideLoading();
+      if (r&&r.code == 1) {
+        r&&r.msg&&wx.showToast({
+          title: r.msg,
+        })
+        this.setData({msg:''});
+      } else {
+        r&&r.msg&&wx.showToast({
+          title: r.msg,
+          icon:'none'
+        })
+      }
+    })
   },
   onReady: function () {
 
