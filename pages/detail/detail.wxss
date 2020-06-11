@@ -130,3 +130,15 @@
   line-height: 2;
   margin-right: 20rpx;
 }
+.copy{
+  white-space: nowrap;
+}
+.copy-content{
+  display: flex;
+  justify-content: space-between;
+}
+.bigImg{
+  width: 500rpx;
+  height: 700rpx;
+  margin: 20rpx 0;
+}

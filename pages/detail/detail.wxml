@@ -11,9 +11,14 @@
       
 
       <view class="info_block_view_view">
-        <text style='font-size:37rpx;color:#E7E8E8;font-weight:700'>{{obj.name}}</text>
+        <text
+          selectable="true"
+          style='font-size:37rpx;color:#E7E8E8;font-weight:700'
+        >{{obj.name}}</text>
         <view class='line'>
-          <view style='font-size:26rpx'><text style='color:#84859B'>{{obj.initiator}}</text></view>
+          <view style='font-size:26rpx' bindtap="copyInitiator">
+            <text style='color:#84859B'>{{obj.initiator}}</text><text style="font-size:18rpx;color:gray"> 点击即可复制</text>
+          </view>
         </view>
         <view class='line'>
           <text style="color:#DDBE91;font-size:20rpx">￥ <text style="font-size:30rpx">{{obj.price}}</text></text>
@@ -27,11 +32,11 @@
     </view>
     <view class="cut-off-line"></view>
     <view class='middle-lv'>
-      <view>
+      <view class="flex flex-align">
         <text>开始时间：</text>
         <text>{{obj.startTime}}</text>
       </view>
-      <view>
+      <view class="flex flex-align">
         <text>结束时间：</text>
         <text>{{obj.endTime}}</text>
       </view>
@@ -42,17 +47,23 @@
     </view>
     <view class="cut-off-line"></view>
     <view class="middle-lv">
-      <view wx:if='{{obj.link}}'>
+      <view wx:if='{{obj.link}}' class="copy-content">
         <view class="link" selectable='true'>链接:{{obj.link}}</view>
-        <button bindtap="copy" class="cu-btn bg-black">复制</button>
+        <button bindtap="copy" class="cu-btn bg-black copy">复制</button>
       </view>
       <view wx:else>暂无链接</view>
-      <image wx:if='{{obj.imgs}}' class="uploadImg" src="{{requestPrefixed+obj.imgs}}"></image>
+      <image
+        wx:if='{{obj.imgs}}'
+        class="uploadImg"
+        src="{{requestPrefixed+obj.imgs}}"
+        data-target="Modal"
+        bindtap="showModal"
+      ></image>
     </view>
     <view class="cut-off-line"></view>
     <view class='details'>
       <view style='margin-bottom:20rpx;font-size:30rpx'>爆料详情</view>
-      <text style="color:#8C8CA4" selectable='true'>{{obj.details}}</text>
+      <text style="color:#8C8CA4">{{obj.details}}</text>
     </view>
     <view class='bottom-lv'>
       <input 
@@ -78,5 +89,22 @@
 
 
 
+  </view>
+</view>
+
+<view class="cu-modal {{modalName=='Modal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">查看大图</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-black"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <image
+        class="bigImg"
+        src="{{requestPrefixed+obj.imgs}}"
+      ></image>
+    </view>
   </view>
 </view>

@@ -8,6 +8,7 @@ Page({
       { label: '1星', id: 1 },
       { label: '2星', id: 2 },
       { label: '3星', id: 3 },
+      { label: '精选', id: 4 },
     ],
   },
   onLoad: function (options) {},

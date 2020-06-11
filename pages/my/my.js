@@ -1,5 +1,5 @@
 import { post } from '../../utils/request.js';
-import {setStore,removeStore, getStore} from '../../utils/storage';
+import {setStore, getStore} from '../../utils/storage';
 const app = getApp();
 
 Page({
@@ -19,8 +19,6 @@ Page({
     let shareInfo=pages[pages.length - 1]['options'];
     if(shareInfo.shareId){
       setStore('shareId',shareInfo.shareId);
-    }else{
-      removeStore('shareId');
     }
 
     wx.getSetting({
@@ -90,6 +88,9 @@ Page({
     this.setData({
       modalName: null
     })
+  },
+  address:function(e){
+    console.log(e)
   },
   onReady: function () {
 

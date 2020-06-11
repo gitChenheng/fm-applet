@@ -7,7 +7,7 @@ Page({
   data: {
     tabArr:[
       {name:'积分榜单'},{name:'积分转盘'},{name:'成就专区'},
-      // {name:'兑换专区'},
+      {name:'兑换专区'},
     ],
     TabCur: 0,
     scrollLeft:0,
@@ -19,7 +19,10 @@ Page({
     duration:10,
     gameFlag:false,
     achArr:[],
-    userInfo:{}
+    userInfo:{},
+    startDate:'',
+    endDate:'',
+    rangeReward:{},
   },
   gameStart:function(e){
     if(this.data.userInfo.credit<10){
@@ -104,6 +107,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const d=new Date();
+    const y=d.getFullYear();
+    const m=d.getMonth();
+    let nm=m+2,ny=y;
+    if(m==11){
+      ny=y+1;
+      nm=1;
+    }
+    this.setData({
+      startDate:`${y}-${m+1}-1`,
+      endDate:`${ny}-${nm}-1`,
+    })
     post({
       url: '/api/getUserInfo'
     }).then(r => {
@@ -120,6 +135,25 @@ Page({
       if (r&&r.code == 1) {
         const achArr=r.data;
         this.setData({achArr});
+      } else {
+        r&&r.msg&&wx.showToast({
+          title: r.msg,
+          icon:'none'
+        })
+      }
+    });
+    post({
+      url: '/api/admin/findReward'
+    }).then(r => {
+      wx.hideLoading();
+      if (r&&r.code == 1) {
+        const d=r.data,rangeReward={};
+        for(const it of d){
+          if(it.type===1||it.type===2||it.type===3){
+            rangeReward[it.type]=it;
+          }
+        }
+        this.setData({rangeReward});
       } else {
         r&&r.msg&&wx.showToast({
           title: r.msg,

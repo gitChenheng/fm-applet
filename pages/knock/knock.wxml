@@ -56,7 +56,7 @@
     </view>
     <view class='knock_section'>
       <label class='knock_label' style="vertical-align:top">图片：</label>
-      <image wx:if='{{url}}' class="uploadImg" src="{{requestPrefixed+url}}" bindtap='upload'></image>
+      <image wx:if='{{imgs}}' class="uploadImg" src="{{requestPrefixed+imgs}}" bindtap='upload'></image>
       <button
         wx:else
         class="cu-btn bg-black margin-tb-sm"

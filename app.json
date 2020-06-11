@@ -12,6 +12,8 @@
     "pages/my_konck/my_konck",
     "pages/detail/detail",
     "pages/credit/credit",
+    "pages/featured/featured",
+    "pages/webview/webview",
     "pages/icon/icon"
   ],
   "window": {

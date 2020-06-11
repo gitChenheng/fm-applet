@@ -11,15 +11,36 @@
 .gameBox>view{
   width: 216rpx;
   height:216rpx;
+  position: relative;
+}
+.gameBoxBg{
+  width: 216rpx;
+  height: 216rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #000;
+  border-radius: 20rpx;
+}
+.gameBoxMask{
+  width: 216rpx;
+  height: 216rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #000;
+  opacity: .5;
 }
 .gameBlock{
   background: gray;
   color: #000;
   text-align: center;
   line-height: 216rpx;
+  border-radius: 20rpx;
 }
 .gameCurr{
   background: #4684FD;
+  border-color: #4684FD;
   color: #fff;
 }
 .gameBox>view:nth-child(4){
@@ -68,4 +89,30 @@
 }
 .achP>view:last-child{
   margin-right: 5rpx;
+}
+.reward-content{
+  padding: 0 30rpx 20rpx;
+}
+.reward-content>view:nth-child(1){
+  /* color: rgb(14, 7, 7);
+  display: inline-block;
+  background: -webkit-linear-gradient(45deg, #70f7fe, #fbd7c6, #fdefac, #fbd7c6, #70f7fe);
+  animation: ran 1s linear infinite; */
+}
+.reward-content>view:nth-child(2){
+  /* color: rgb(211, 145, 200); */
+}
+.reward-content>view:nth-child(3){
+  /* color: rgb(152, 182, 187); */
+}
+@keyframes ran {
+  0% {
+    background-position: 0 0;
+  }
+  50%{
+    background-position: 750rpx 0;
+  }
+  100% {
+      background-position: 0 0;
+  }
 }

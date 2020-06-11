@@ -11,7 +11,7 @@
     </view>
     <view wx:if='{{authSettingUserInfo}}' style='display:inline-block;line-height:110rpx'>
       <button wx:if="{{userInfo.hadSignIn}}" disabled class='cu-btn round'>已签到</button>
-      <button wx:else class='cu-btn block bg-black margin-tb-sm lg' bindtap='signUp'>签到</button>
+      <button wx:if="{{userInfo.hadSignIn==0}}" class='cu-btn block bg-black margin-tb-sm lg' bindtap='signUp'>签到</button>
       <view wx:if="{{userInfo.hadSignIn}}" class="continueSign">已连续签到 {{userInfo.continueSign}} 天</view>
     </view>
 
@@ -57,6 +57,7 @@
   <view class="cut-off-line"></view> -->
   <!-- <view class='my_topCon'>
     <view>收货地址：</view>
+    <view>收货地址：收货地址：收货地址：收货地址：收货地址：收货地址：</view>
   </view>
   <view class="cut-off-line"></view> -->
   <view class='my_topCon'>
@@ -83,7 +84,7 @@
         爆料：点击该平台首页按钮进行的抽奖爆料，在经过平台审核通过后，可根据爆料评级获取一定积分奖励，三星爆料将获得可观积分奖励。\n
         邀请新人：将该平台分享给好友，在好友点击该平台后，将获得大量积分奖励。\n
         转盘：点击积分专区体验积分转盘，可凭借您的运气获得或损失一定积分（投机需谨慎）。\n
-        <!-- 成就：完成积分专区的指定成就后，可获得一定对应积分奖励，高级成就将获得可观积分奖励。\n -->
+        成就：完成积分专区的指定成就后，可获得一定对应成就点数，成就点数越高可解锁兑换专区的物品越多。\n\n
       </text>
     </view>
   </view>

@@ -75,6 +75,28 @@ Page({
       }
     })
   },
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+  copyInitiator:function(){
+    var _this = this;
+    wx.setClipboardData({
+      //去找上面的数据
+      data: _this.data.obj.initiator,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+        });
+      }
+    });
+  },
   copy:function(){
     var _this = this;
     console.log(this.data.obj.link)
@@ -88,6 +110,12 @@ Page({
       }
     });
   },
+  // nato:function() {
+  //   const url=this.data.obj.link
+  //   wx.navigateTo({
+  //     url: `/pages/webview/webview?url=${url}`,
+  //   })
+  // },
   onReady: function () {
 
   },

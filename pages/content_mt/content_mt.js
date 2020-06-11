@@ -13,6 +13,20 @@ Page({
     achname:'',
     achpoint:'',
     achpoint:'',
+    rewardtypes:[
+      { label: '第1名奖励', id: 1 },
+      { label: '第2名奖励', id: 2 },
+      { label: '第3名奖励', id: 3 },
+      { label: '奖励', id: 4 },
+    ],
+    rewardtypesIdx:null,
+    rewardData:[],
+  },
+  bindrewardtypeChange:function(e){
+    const rewardtypesIdx=e.detail.value;
+    this.setData({rewardtypesIdx})
+    // this.data.rewardtypes[idx].typeIdx = e.detail.value;
+    // this.setData({ info: this.data.info })
   },
   typeinput:function(e){
     this.setData({ type: e.detail.value})
@@ -93,6 +107,32 @@ Page({
           var pr = e.currentTarget.dataset;
           post({
             url: '/api/admin/delType',
+            data: { id: e.currentTarget.dataset.value }
+          }).then(r => {
+            if (r.code == 1) {
+              this.init();
+            } else {
+              wx.showToast({
+                title: r.msg,
+                icon: 'none'
+              })
+            }
+          })
+        } else if (res.cancel) {
+
+        }
+      }
+    })
+  },
+  delreward:function (e) {
+    wx.showModal({
+      title: '',
+      content: '确认删除？',
+      success: res => {
+        if (res.confirm) {
+          var pr = e.currentTarget.dataset;
+          post({
+            url: '/api/admin/delReward',
             data: { id: e.currentTarget.dataset.value }
           }).then(r => {
             if (r.code == 1) {
@@ -204,6 +244,7 @@ Page({
           platformData: d.platformData,
           methodData: d.methodData,
           achData:d.achieveData,
+          rewardData:d.rewardData
         })
       } else {
         wx.showToast({
@@ -266,5 +307,59 @@ Page({
   onHide: function () {},
   onUnload: function () {},
   onPullDownRefresh: function () {},
-  onReachBottom: function () {}
+  onReachBottom: function () {},
+  rewardSubmit:function (e) {
+    const obj = e.detail.value;
+    obj.rewardtype=this.data.rewardtypes[this.data.rewardtypesIdx].id;
+    obj.name=obj.rewardname;
+    obj.type=obj.rewardtype;
+    obj.needCredit=Number(obj.needCredit);
+    obj.details=obj.rewarddetail;
+    post({
+      url:'/api/admin/addReward',
+      data: obj
+    }).then(r=>{
+      if(r.code==1){
+        let d=r.data;
+        wx.showToast({
+          title: r.msg,
+        })
+        this.init();
+      } else {
+        wx.showToast({
+          title: r.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  onShelf:function (e) {
+    const final=e.detail.value;
+    const id=e.currentTarget.dataset.id;
+    wx.showToast({
+      title: '',
+      icon:'none'
+    })
+    post({
+      url:'/api/admin/updateReward',
+      data: {
+        onShelf:final,
+        id,
+      }
+    }).then(r=>{
+      if(r.code==1){
+        let d=r.data;
+        wx.showToast({
+          title: r.msg,
+        })
+        this.init();
+      } else {
+        wx.showToast({
+          title: r.msg,
+          icon: 'none'
+        });
+        return;
+      }
+    })
+  }
 })

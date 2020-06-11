@@ -1,4 +1,4 @@
-类别:
+<view>类别:</view>
 <view class='info_block' wx:for="{{typeData}}" wx:for-item="item" wx:key="index">
   <view class='flex flex-align'>
     <text style="width:50%;line-height:80rpx">{{item.name}}</text>
@@ -13,7 +13,7 @@
 <button class='cu-btn round bg-black lg' bindtap='addtype' data-value="{{item.value}}">添加</button>
 <text>\n\n</text>
 
-平台:
+<view>平台:</view>
 <view class='info_block' wx:for="{{platformData}}" wx:for-item="item" wx:key="index">
     <view class='flex flex-align'>
       <text style="width:30%;line-height:200rpx">{{item.name}}</text>
@@ -42,6 +42,61 @@
 />
 <button class='cu-btn round bg-black lg' bindtap='addplatform' data-value="{{item.id}}">添加</button>
 <text>\n\n</text>
+
+<view>奖品：</view>
+<view class='info_block' wx:for="{{rewardData}}" wx:for-item="item" wx:key="index">
+  <view style="text-align:left">
+    <text class="text">名称：{{item.name}}</text>
+    <text class="text">类别：{{item.type}}</text>
+    <text class="text">所需积分：{{item.needCredit}} \n</text>
+    <text class="text" wx:if='{{item.details}}'>详情：{{item.details}} \n</text>
+    <view>
+      <view style='display:inline-block;margin-right:30rpx'>是否上架</view>
+      <switch name="onShelf" checked='{{item.onShelf}}' data-id="{{item.id}}" onchange='onShelf'/>
+    </view>
+    <button class='cu-btn round bg-black' bindtap='delreward' data-value="{{item.id}}">删除</button>
+  </view>
+</view>
+<form bindsubmit="rewardSubmit">
+  <input
+    class='input' name="rewardname"
+    placeholder="请输入奖品名称"
+    bindinput='rewardname'
+    value="{{rewardname}}"
+  />
+  <input
+    class='input' name="needCredit"
+    placeholder="请输入兑换所需积分"
+    bindinput='needCredit' type="num"
+    value="{{needCredit}}"
+  />
+  <view style="height:20rpx"></view>
+  <picker
+    bindchange="bindrewardtypeChange"
+    data-infoIdx="{{index}}" value="{{item.typeIdx}}"
+    range="{{rewardtypes}}" range-key='label'
+  >
+    <label class='knock_label'>类别：</label>
+    <text style="color:red" wx:if="{{!rewardtypesIdx}}">点击此处选择类别</text>
+    <text class="picker" wx:else>{{rewardtypes[rewardtypesIdx].label}}</text>
+  </picker>
+  <view style="height:20rpx"></view>
+  <input
+    class='input' name="rewarddetail"
+    placeholder="请输入奖品详情"
+    bindinput='rewarddetail'
+    value="{{rewarddetail}}"
+  />
+  <view>
+    <view style='display:inline-block;margin-right:30rpx'>是否上架</view>
+    <switch name="onShelf"/>
+  </view>
+  <button form-type="submit" class='cu-btn round bg-black lg'>添加</button>
+  <button form-type="reset" class='cu-btn round bg-black lg'>重置</button>
+</form>
+
+<text>\n\n</text>
+
 
 <!-- 成就列表:
 <view class='info_block' wx:for="{{achData}}" wx:for-item="item" wx:key="index">

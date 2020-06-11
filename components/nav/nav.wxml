@@ -5,11 +5,17 @@
     </view>
     <view class="{{pageCur=='basics'?'text-gray':'text-gray'}}">首页</view>
   </navigator>
+  <navigator open-type='reLaunch' class="action" url="/pages/featured/featured">
+    <view class='cuIcon-cu-image'>
+      <text class="cuIcon-{{pageCur=='featured'?'choicenessfill':'choiceness'}} lg text-gray"></text>
+    </view>
+    <view class="{{pageCur=='featured'?'text-gray':'text-gray'}}">精选</view>
+  </navigator>
   <navigator open-type='reLaunch' class="action" url="/pages/credit/credit">
     <view class='cuIcon-cu-image'>
       <text class="cuIcon-{{pageCur=='credit'?'presentfill':'present'}} lg text-gray"></text>
     </view>
-    <view class="{{pageCur=='basics'?'text-gray':'text-gray'}}">积分专区</view>
+    <view class="{{pageCur=='credit'?'text-gray':'text-gray'}}">积分专区</view>
   </navigator>
   <navigator open-type='reLaunch' class="action" url="/pages/my/my">
     <view class='cuIcon-cu-image'>

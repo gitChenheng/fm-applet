@@ -5,12 +5,17 @@
 </scroll-view>
 <view style="padding-bottom:200rpx">
   <view style="display:{{TabCur==0?'block':'none'}}">
-    <!-- <view class="cu-bar bg-white solid-bottom">
+    <view class="cu-bar bg-black solid-bottom">
       <view class='action'>
-        <text class='cuIcon-titles text-orange '></text> 本期（2020-05-01—2020-06-01）积分榜奖励：
+        <text class='cuIcon-titles text-white'></text> 本期（{{startDate}}—{{endDate}}）积分榜奖励： <br/>
       </view>
     </view>
-    <view class="cu-card case {{isCard?'no-card':''}}">
+    <view class="bg-black reward-content">
+      <view>第 1 名：{{rangeReward['1'].name}}</view>
+      <view>第 2 名：{{rangeReward['2'].name}}</view>
+      <view>第 3 名：{{rangeReward['3'].name}}</view>
+    </view>
+    <!-- <view class="cu-card case {{isCard?'no-card':''}}">
       <view class="cu-item shadow">
         <view class="image">
           <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="widthFix"></image>
@@ -50,6 +55,11 @@
     </view>
     <view class="gameBox">
       <view wx:for="{{gameBlock}}" wx:key="index">
+        <image
+          wx:if='{{gameFlag||(!gameFlag&&gameIdx!=index)}}'
+          class="gameBoxBg" src="/img/logo.jpg"
+        ></image>
+        <view class="{{gameIdx==index&&gameFlag?'gameBoxMask':''}}"></view>
         <view class="{{gameIdx==index?'gameBlock gameCurr':'gameBlock'}}">
           {{gameBlock[index].name}}:{{gameBlock[index].credit}}
         </view>
@@ -73,16 +83,7 @@
     <view wx:if='{{!userInfo.id}}' class="tabCon">请先授权登录</view>
   </view>
   <view wx:if="{{TabCur==3}}" class="tabCon">
-    <view>
-      10元现金红包
-      所需积分:1000
-      立即兑换
-    </view>
-    <view>
-      10元现金红包
-      所需积分:1000
-      立即兑换
-    </view>
+    努力开发中...敬请期待...
   </view>
 </view>
 
