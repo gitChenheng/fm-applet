@@ -143,7 +143,7 @@ Page({
       }
     });
     post({
-      url: '/api/admin/findReward'
+      url: '/api/findReward'
     }).then(r => {
       wx.hideLoading();
       if (r&&r.code == 1) {
