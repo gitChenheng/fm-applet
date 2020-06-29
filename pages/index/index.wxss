@@ -60,6 +60,7 @@ button{
   border-radius: 30rpx;
   margin-bottom: 25rpx;
   padding: 15rpx 30rpx;
+  overflow: hidden;
 }
 .info_block_view{
   padding: 20rpx 0;
@@ -157,4 +158,10 @@ button{
   font-size: 24rpx;
   padding: 5rpx;
   background: #fff;
+}
+.parti{
+  position: absolute;
+  font-size: 20rpx;
+  top: 0;
+  left: 0;
 }

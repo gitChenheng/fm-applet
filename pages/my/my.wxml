@@ -76,10 +76,10 @@
     <!-- <button class="cu-btn bg-black margin-tb-sm">我的留言记录</button> -->
   </view>
   <view class="cut-off-line"></view>
-  <view class='my_topCon'>
-    <!-- <button bindtap='my_konck' class='cu-btn block bg-black margin-tb-sm lg'>我的爆料</button> -->
-    <button bindtap='knock_ap' wx:if="{{userInfo.role===1}}" class='cu-btn block bg-black margin-tb-sm lg'>爆料审核</button>
-    <button bindtap='content_mt' wx:if="{{userInfo.role===1}}" class='cu-btn block bg-black margin-tb-sm lg'>内容维护</button>
+  <view class='my_topCon' wx:if="{{userInfo.role===1}}">
+    <button bindtap='my_konck' class='cu-btn block bg-black margin-tb-sm lg'>我的爆料</button>
+    <button bindtap='knock_ap' class='cu-btn block bg-black margin-tb-sm lg'>爆料审核</button>
+    <button bindtap='content_mt' class='cu-btn block bg-black margin-tb-sm lg'>内容维护</button>
   </view>
 </view>
 

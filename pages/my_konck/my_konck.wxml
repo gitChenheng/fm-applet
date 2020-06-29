@@ -36,6 +36,12 @@
       <view wx:if="{{item.reviewStatus===1}}" style='color:red'>获得积分： {{item.credit}}</view>
       <view wx:else style='color:green;word-break: break-all;'>{{item.rejectReason?item.rejectReason:''}}</view>
     </view>
+    <button
+      wx:if="{{!!item.reviewStatus}}"
+      bindtap='reject'
+      class='cu-btn block bg-black margin-tb-sm lg'
+      data-id="{{item.id}}"
+    >撤回</button>
   </view>
   <view style="text-align:center;margin-bottom:20rpx" hidden="{{!searchLoadingComplete}}">{{pageIndex==1?'暂无爆料':'已加载全部'}}</view>
 </view>

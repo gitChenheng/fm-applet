@@ -2,8 +2,8 @@
   <text>我的成就点数：</text>
   <text>{{achPoint}}</text>
 </view>
-<view wx:if='{{achPoint<3}}' class="pd-24">
-成就点数达到 3 即可浏览此页面精选内容，快去获取成就吧！
+<view wx:if='{{achPoint<achlmt}}' class="pd-24">
+成就点数达到 {{achlmt}} 即可浏览此页面精选内容，快去获取成就吧！
 </view>
 <view wx:else class="pd-24">
 以下为精选内容：
@@ -16,9 +16,10 @@
         wx:for-item="item" wx:key="id"
         hover-class="btn-hover"
       >
-        <view wx:if='{{achPoint<3}}' class="info_block_mask">?</view>
+        <view wx:if='{{achPoint<achlmt}}' class="info_block_mask">?</view>
         <image style="position: absolute;width: 100rpx;height: 100rpx;right: 0;top:0" src="../../img/s-{{item.level}}.png"></image>
         <view class='info_block_view' bindtap='clickEvent' data-id="{{item.id}}">
+          <view class="parti cu-tag gl-bg2" wx:if='{{item.participate}}'>已参与</view>
           <view class="info_block_view_fr">
             <image class="info_block_view_img" wx:if='{{item.platformImgUrl}}' src="{{requestPrefixed+item.platformImgUrl}}"></image>
             <image class="info_block_view_img" wx:else src="../../images/logo.png"></image>

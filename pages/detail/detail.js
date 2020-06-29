@@ -1,14 +1,34 @@
 import { post } from '../../utils/request.js';
 import config from '../../config/config.js';
-const app = getApp();
 
 Page({
   data: {
     requestPrefixed: config.requestPrefixed,
-    obj:{},
+    obj:{
+      participate:false,
+    },
     infoId:null,
     inputValue:'',
-    commentList:[]
+    commentList:[],
+  },
+  onPatiTag:function(e){
+    const ifPartici=e.detail.value;
+    const infoId=this.data.infoId;
+    post({
+      url: '/api/actParticipate',
+      data: {infoId,ifPartici}
+    }).then(r => {
+      wx.hideLoading();
+      if (r.code == 1) {
+        let d = r.data;
+        wx.showToast()
+      } else {
+        wx.showToast({
+          title: r.msg,
+          icon: 'none'
+        })
+      }
+    })
   },
   onLoad: function (options) {
     this.setData({infoId:options.id})

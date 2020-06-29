@@ -102,6 +102,13 @@ Page({
   },
   msgboard:function (e) {
     const msg=this.data.msg;
+    if(!msg){
+      wx.showToast({
+        title: '留言不能为空',
+        icon:'none',
+      })
+      return;
+    }
     wx.showLoading()
     post({
       url: '/api/addMessageBoard',

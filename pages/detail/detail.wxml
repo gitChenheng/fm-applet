@@ -28,6 +28,13 @@
             >{{obj.free?'免费参与':'付费参与'}}</text>
           </text>
         </view>
+        <view class="patiTag">
+          <text>标记已参与 </text>
+          <switch
+            name="patiTag" checked='{{obj.participate}}'
+            onchange='onPatiTag'
+          />
+        </view>
       </view>
     </view>
     <view class="cut-off-line"></view>

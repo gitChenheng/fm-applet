@@ -10,10 +10,12 @@ Page({
     info:[],
     userInfo:{},
     searchLoadingComplete:false,
-    achPoint:0
+    achPoint:0,
+    achlmt:3,
+    pageSize:10,
   },
   clickEvent:function(e){
-    if(Number(this.data.achPoint)<3){
+    if(Number(this.data.achPoint)<this.data.achlmt){
       return;
     }else{
       wx.navigateTo({
@@ -33,7 +35,6 @@ Page({
       if (r&&r.code == 1) {
         let userInfo = r.data;
         this.setData({ userInfo });
-
         if(userInfo.achieve){
           post({
             url: '/api/findAch'
@@ -60,20 +61,17 @@ Page({
             }
           })
         }
-
-
-
       }
     })
-    this.initInfo()
+    // this.initInfo()
   },
-  initInfo:function(){
+  initInfo:function(init){
     wx.showLoading({ mask: true })
     post({
       url: '/api/findInfoConditional',
       data:{
         level:4,
-        pageIndex: this.data.pageIndex,
+        pageIndex: init?1:this.data.pageIndex,
         pageSize: this.data.pageSize,
       }
     }).then(r => {
@@ -84,6 +82,8 @@ Page({
           this.setData({ searchLoadingComplete:true});
           return;
         }
+        init?
+        this.setData({ info: d }):
         this.setData({ info: [...this.data.info,...d] });
       } else {
         r&&wx.showToast({
@@ -105,7 +105,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.initInfo(true)
   },
 
   /**

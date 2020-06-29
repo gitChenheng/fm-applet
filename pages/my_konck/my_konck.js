@@ -1,5 +1,4 @@
 import { post } from '../../utils/request.js';
-const app = getApp();
 const pageSize = 5;
 Page({
   data: {
@@ -7,6 +6,29 @@ Page({
     pageIndex: 1,
     pageSize,
     searchLoadingComplete: false,
+  },
+  reject:function(e){
+    const id=e.target.dataset.id;
+    wx.showLoading({ mask: true })
+    post({
+      url: '/api/admin/reject',
+      data: {
+        id,
+      }
+    }).then(r => {
+      wx.hideLoading();
+      if (r.code == 1) {
+        wx.showToast({
+          title: r.msg,
+        })
+        this.init(true)
+      } else {
+        wx.showToast({
+          title: r.msg,
+          icon: 'none'
+        })
+      }
+    })
   },
   onLoad: function (options) {},
   onReady: function () {},
@@ -20,7 +42,7 @@ Page({
       this.init()
     })
   },
-  init: function () {
+  init: function (refresh) {
     wx.showLoading({ mask: true })
     post({
       url: '/api/findInfo',
@@ -37,7 +59,11 @@ Page({
           this.setData({ searchLoadingComplete: true });
           return;
         }
-        this.setData({ info: [...this.data.info, ...d] });
+        if(refresh){
+          this.setData({ info: d});
+        }else{
+          this.setData({ info: [...this.data.info, ...d] });
+        }
       } else {
         wx.showToast({
           title: r.msg,

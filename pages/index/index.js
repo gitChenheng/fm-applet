@@ -22,6 +22,9 @@ Page({
     userInfo:{},
     shareInfo:{},
   },
+  reject:function(e){
+    console.log(e);
+  },
   onLoad:function(){
     // wx.navigateTo({
     //   url: '/pages/my/my',
@@ -32,7 +35,7 @@ Page({
       setStore('shareId',shareInfo.shareId);
     }
 
-    this.findInfoConditionalEvent();
+    // this.findInfoConditionalEvent();
     post({
       url: '/api/admin/getAllListOfAward'
     }).then(r => {
@@ -61,7 +64,9 @@ Page({
       }
     })
   },
-  onShow: function () {},
+  onShow: function () {
+    this.findInfoConditionalEvent(true);
+  },
   onReady:function(){},
   initInfo:function(){
     wx.showLoading({ mask: true })
@@ -119,7 +124,7 @@ Page({
       },1000)
     }
   },
-  findInfoConditionalEvent:function(){
+  findInfoConditionalEvent:function(init){
     wx.showLoading({ mask: true })
     post({
       url: '/api/findInfoConditional',
@@ -127,7 +132,7 @@ Page({
         typeId: this.data.typeId,
         platformId: this.data.platformId,
         search: this.data.search,
-        pageIndex: this.data.pageIndex,
+        pageIndex: init?1:this.data.pageIndex,
         pageSize: this.data.pageSize,
       }
     }).then(r => {
@@ -138,6 +143,8 @@ Page({
           this.setData({ searchLoadingComplete: true });
           return;
         }
+        init?
+        this.setData({ info: d }):
         this.setData({ info: [...this.data.info, ...d] });
       } else {
         r && wx.showToast({
