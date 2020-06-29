@@ -68,6 +68,7 @@
 }
 .msgboard{
   width: 100%;
+  height: 200rpx;
   border: 1px solid #ddd;
   padding: 20rpx;
   border-radius: 10rpx;
@@ -76,4 +77,14 @@
   position: absolute;
   right: 20rpx;
   bottom: 20rpx;
+}
+.edit{
+  font-size: 22rpx;
+  padding: 4rpx 6rpx;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 10rpx;
+  text-align: center;
+  display: inline-block;
 }

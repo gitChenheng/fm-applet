@@ -8,6 +8,9 @@
         </view>
         <text class="userinfo-nickname">{{userInfo.name}}</text>
       </block>
+      <view wx:if='{{authSettingUserInfo}}' style="margin-top: 20rpx;">
+        <view class="edit" bindtap="editInfo" hover-class="btn-hover">修改资料</view>
+      </view>
     </view>
     <view wx:if='{{authSettingUserInfo}}' style='display:inline-block;line-height:110rpx'>
       <button wx:if="{{userInfo.hadSignIn}}" disabled class='cu-btn round'>已签到</button>
@@ -55,11 +58,11 @@
     <view>余额：{{userInfo.balance}}</view>
   </view>
   <view class="cut-off-line"></view> -->
-  <!-- <view class='my_topCon'>
+  <view class='my_topCon'>
     <view>收货地址：</view>
-    <view>收货地址：收货地址：收货地址：收货地址：收货地址：收货地址：</view>
+    <view>{{userInfo.address?userInfo.address:''}}</view>
   </view>
-  <view class="cut-off-line"></view> -->
+  <view class="cut-off-line"></view>
   <view class="my_topCon">
     <textarea
       class="msgboard"

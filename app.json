@@ -14,6 +14,7 @@
     "pages/credit/credit",
     "pages/featured/featured",
     "pages/webview/webview",
+    "pages/editInfo/editInfo",
     "pages/icon/icon"
   ],
   "window": {

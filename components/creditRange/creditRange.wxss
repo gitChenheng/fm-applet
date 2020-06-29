@@ -29,3 +29,7 @@
   margin-top: 50rpx;
   float: right;
 }
+.range-serial{
+  width: 32rpx;
+  text-align: center;
+}

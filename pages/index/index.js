@@ -27,7 +27,7 @@ Page({
   },
   onLoad:function(){
     // wx.navigateTo({
-    //   url: '/pages/my/my',
+    //   url: '/pages/editInfo/editInfo',
     // })
     let pages = getCurrentPages();
     let shareInfo=pages[pages.length - 1]['options'];

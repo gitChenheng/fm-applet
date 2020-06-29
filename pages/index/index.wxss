@@ -6,12 +6,12 @@ button{
   margin: 30rpx;
   border-radius: 30rpx;
   padding: 30rpx;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   width: 690rpx;
 }
 .condition-mask{
-  position:absolute;width:100%;height:100%;z-index:1
+  position:fixed;width:100%;height:100%;z-index:1
 }
 .condition>view{
   margin-bottom: 30rpx;

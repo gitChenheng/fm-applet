@@ -1,0 +1,43 @@
+<view class="con">
+  <form bindsubmit="formSubmit">
+    <view class='my_topCon'>
+      <view class="userinfo">
+        <block>
+          <view class="userinfo-avatar" bindtap="bindViewTap">
+            <open-data type="userAvatarUrl"></open-data>
+          </view>
+          <text class="userinfo-nickname">{{userInfo.name}}</text>
+        </block>
+      </view>
+    </view>
+    <view class="cut-off-line"></view>
+    <view>
+      <view>收货地址：</view>
+      <view>
+        <picker name='province' bindchange="bindProvinceChange" value="{{name}}" range="{{provinceList}}" range-key='name'>
+          <label class='knock_label'>省份：</label>
+          <text class="knock_placecholder" wx:if="{{!province}}">点击此处选择省份</text>
+          <view class="picker" wx:else>{{province}}</view>
+        </picker>
+      </view>
+      <view>
+        <picker name='city' bindchange="bindCityChange" value="{{name}}" range="{{cityList}}" range-key='name'>
+          <label class='knock_label'>市：</label>
+          <text class="knock_placecholder" wx:if="{{!city}}">点击此处选择市</text>
+          <view class="picker" wx:else>{{city}}</view>
+        </picker>
+      </view>
+      <view>
+        <picker name='district' bindchange="bindDistrictChange" value="{{index}}" range="{{districtList}}">
+          <label class='knock_label'>区：</label>
+          <text class="knock_placecholder" wx:if="{{!district}}">点击此处选择区</text>
+          <view class="picker" wx:else>{{district}}</view>
+        </picker>
+      </view>
+
+      <view><input name="addressDetail" type="text" placeholder="请输入详细收货地址"/></view>
+    </view>
+    <view class="cut-off-line"></view>
+    <button class='cu-btn block bg-black margin-tb-sm' form-type="submit">保存</button>
+  </form>
+</view>

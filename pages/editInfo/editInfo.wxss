@@ -1,0 +1,5 @@
+@import "../my/my.wxss";
+
+.picker{
+  display: inline-block;
+}

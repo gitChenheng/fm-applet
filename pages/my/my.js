@@ -192,6 +192,11 @@ Page({
       url: '../my_konck/my_konck'
     })
   },
+  editInfo:function(){
+    wx.navigateTo({
+      url: '/pages/editInfo/editInfo',
+    })
+  },
   onShareAppMessage: function(e) {
     if (e.from === 'menu') {}
     if (e.from === 'button') {}

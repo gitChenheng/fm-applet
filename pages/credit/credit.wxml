@@ -5,12 +5,12 @@
 </scroll-view>
 <view style="padding-bottom:200rpx">
   <view style="display:{{TabCur==0?'block':'none'}}">
-    <view wx:if="{{rangeReward['1']}}" class="cu-bar bg-black solid-bottom">
+    <view wx:if="{{rangeReward['1']}}" class="cu-bar solid-bottom">
       <view class='action'>
         <text class='cuIcon-titles text-white'></text> 本期（{{startDate}}—{{endDate}}）积分榜奖励： <br/>
       </view>
     </view>
-    <view wx:if="{{rangeReward['1']}}" class="bg-black reward-content">
+    <view wx:if="{{rangeReward['1']}}" class="reward-content">
       <view wx:if="{{rangeReward['1']}}">第 1 名：{{rangeReward['1'].name}}</view>
       <view wx:if="{{rangeReward['2']}}">第 2 名：{{rangeReward['2'].name}}</view>
       <view wx:if="{{rangeReward['3']}}">第 3 名：{{rangeReward['3'].name}}</view>
@@ -42,6 +42,7 @@
         </view>
       </view>
     </view> -->
+    <view class="cut-off-line"></view>
     <creditRange id='creditRange'></creditRange>
   </view>
   <view wx:if="{{TabCur==1}}" class="tabCon">
