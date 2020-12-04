@@ -32,14 +32,14 @@ Page({
   onReady: function () {},
   onShow: function () {
     post({
-      url: '/api/admin/getAllListOfAward'
+      url: '/api/getAllListOfAward'
     }).then(r => {
       if (r.code == 1) {
         let d = r.data;
         this.setData({
-          typeData: d.typeData,
-          platformData: d.platformData.filter(it => it.platformImgUrl),
-          methodData: d.methodData,
+          typeData: d.types,
+          platformData: d.platforms.filter(it => it.platformImgUrl),
+          methodData: d.methods,
         })
       } else {
         wx.showToast({
@@ -126,14 +126,14 @@ Page({
       });
       return;
     };
-    if (!obj.typeId) {
+    if (!obj.typeid) {
       wx.showToast({
         title: '请选择类别',
         icon: 'none'
       });
       return;
     };
-    if (!obj.platformId) {
+    if (!obj.platformid) {
       wx.showToast({
         title: '请选择平台',
         icon: 'none'
@@ -162,13 +162,13 @@ Page({
       });
       return;
     };
-    obj.typeId = this.data.typeData[obj.typeId].id;
-    obj.platformId = this.data.platformData[obj.platformId].id;
-    obj.startTime+=' 00:00:00';
-    obj.endTime += ' 00:00:00';
-    obj.imgs=this.data.imgs;
+    obj.typeid = this.data.typeData[obj.typeid].id;
+    obj.platformid = this.data.platformData[obj.platformid].id;
+    obj.startAt = obj.startTime + ' 00:00:00';
+    obj.endAt = obj.endTime + ' 00:00:00';
+    obj.img=this.data.imgs;
     post({
-      url: '/api/addInfo',
+      url: '/api/knockInfo',
       data:obj
     }).then(r => {
       if (r.code == 1) {

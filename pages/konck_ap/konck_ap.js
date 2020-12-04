@@ -19,9 +19,12 @@ Page({
   init:function(){
     wx.showLoading({ mask: true });
     post({
-      url: '/api/findInfo',
+      url: '/api/findInfoConditional',
       data: {
-        type:'needToApproveInfo',
+        // type:'needToApproveInfo',
+        reviewStatus: 0,
+        pageIndex:1,
+        pageSize:10,
       }
     }).then(r => {
       wx.hideLoading();
@@ -48,8 +51,13 @@ Page({
     }
     var pr = e.currentTarget.dataset;
     post({
-      url: '/api/admin/approve',
-      data: { id: pr.infoid, type: 1, levelId: this.data.levels[this.data.info[idx].levelIdx].id }
+      url: '/api/reviewInfo',
+      data: {
+        id: pr.infoid,
+        // type: 1,
+        reviewStatus:1,
+        level: this.data.levels[this.data.info[idx].levelIdx].id
+      }
     }).then(r => {
       if (r.code == 1) {
         wx.showToast({

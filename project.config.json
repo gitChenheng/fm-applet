@@ -24,7 +24,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.5",
+	"libVersion": "2.14.0",
 	"appid": "wx43c3b5e1b112b5b0",
 	"projectname": "fm-applet",
 	"debugOptions": {

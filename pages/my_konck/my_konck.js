@@ -45,9 +45,8 @@ Page({
   init: function (refresh) {
     wx.showLoading({ mask: true })
     post({
-      url: '/api/findInfo',
+      url: '/api/getMyInfos',
       data: {
-        type: 'myInfo',
         pageIndex: this.data.pageIndex,
         pageSize: this.data.pageSize,
       }

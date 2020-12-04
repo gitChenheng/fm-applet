@@ -15,14 +15,14 @@
       <input name="initiator" placeholder="请输入金主名称"/>
     </view>
     <view class="knock_section">
-      <picker name='typeId' bindchange="bindTypeChange" value="{{typeIdx}}" range="{{typeData}}" range-key='name'>
+      <picker name='typeid' bindchange="bindTypeChange" value="{{typeIdx}}" range="{{typeData}}" range-key='name'>
         <label class='knock_label'>类别<text class="asterisk">*</text>：</label>
         <text class="knock_placecholder" wx:if="{{typeIdx===null}}">点击此处选择类别</text>
         <view class="picker" wx:else>{{typeData[typeIdx].name}}</view>
       </picker>
     </view>
     <view class="knock_section">
-      <picker name="platformId" bindchange="bindPlatformChange" value="{{platformIdx}}" range="{{platformData}}" range-key="name">
+      <picker name="platformid" bindchange="bindPlatformChange" value="{{platformIdx}}" range="{{platformData}}" range-key="name">
         <label class='knock_label'>平台<text class="asterisk">*</text>：</label>
         <text class="knock_placecholder" wx:if="{{platformIdx===null}}">点击此处选择平台</text>
         <view class="picker" wx:else>{{platformData[platformIdx].name}}</view>

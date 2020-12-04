@@ -1,6 +1,6 @@
 <view wx:if="{{PageCur=='basics'}}">
-  <button wx:if='{{userInfo.role==1}}' class="lg knock-btn" bindtap='knock'>
-    <image src="../../img/2.png"></image>
+  <button class="lg knock-btn" bindtap='knock'>
+    <image src="/img/2.png"></image>
     我要爆料
   </button>
   
@@ -18,7 +18,7 @@
     </view>
     <view class="action" bindtap="conditionEvent" hover-class="search-bar-hover">
       <view class="search-btn gl-bg2">
-        <image src="../../img/1.png" style="width:28rpx;height:34rpx"></image>
+        <image src="/img/1.png" style="width:28rpx;height:34rpx"></image>
       </view>
     </view>
   </view>
@@ -48,12 +48,12 @@
         wx:for-item="item" wx:key="id"
         hover-class="btn-hover"
       >
-        <image style="position: absolute;width: 100rpx;height: 100rpx;right: 0;top:0" src="../../img/s-{{item.level}}.png"></image>
+        <image style="position: absolute;width: 100rpx;height: 100rpx;right: 0;top:0" src="/img/s-{{item.level}}.png"></image>
         <view class='info_block_view' bindtap='clickEvent' data-id="{{item.id}}">
-          <view class="parti cu-tag gl-bg2" wx:if='{{item.participate}}'>已参与</view>
+          <view class="parti cu-tag gl-bg2" wx:if='{{item.participate}}'>已读</view>
           <view class="info_block_view_fr">
             <image class="info_block_view_img" wx:if='{{item.platformImgUrl}}' src="{{requestPrefixed+item.platformImgUrl}}"></image>
-            <image class="info_block_view_img" wx:else src="../../images/logo.png"></image>
+            <image class="info_block_view_img" wx:else src="/images/logo.png"></image>
             <view>{{item.platform}}</view>
           </view>
           <view class="info_block_view_view">

@@ -72,7 +72,12 @@ view{
 .gl-bg2{
   background:#4684FD;
 }
-
+.gl-c2{
+  color:#BA7677;
+}
+.mg20{
+  margin: 20rpx 0;
+}
 .cut-off-line{
   border-top: 1px solid #2E323E;
 }

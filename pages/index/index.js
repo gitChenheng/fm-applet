@@ -27,7 +27,7 @@ Page({
   },
   onLoad:function(){
     // wx.navigateTo({
-    //   url: '/pages/editInfo/editInfo',
+    //   url: '/pages/credit/credit',
     // })
     let pages = getCurrentPages();
     let shareInfo=pages[pages.length - 1]['options'];
@@ -37,14 +37,14 @@ Page({
 
     // this.findInfoConditionalEvent();
     post({
-      url: '/api/admin/getAllListOfAward'
+      url: '/api/getAllListOfAward'
     }).then(r => {
       if (r&&r.code && r.code == 1) {
         let d = r.data;
         this.setData({
-          typeData: d.typeData,
-          platformData: d.platformData.filter(it => it.platformImgUrl),
-          methodData: d.methodData,
+          typeData: d.types,
+          platformData: d.platforms.filter(it => it.platformImgUrl),
+          methodData: d.methods,
         })
       } else {
         r&&wx.showToast({
@@ -129,11 +129,12 @@ Page({
     post({
       url: '/api/findInfoConditional',
       data: {
-        typeId: this.data.typeId,
-        platformId: this.data.platformId,
+        typeid: this.data.typeId,
+        platformid: this.data.platformId,
         search: this.data.search,
         pageIndex: init?1:this.data.pageIndex,
         pageSize: this.data.pageSize,
+        reviewStatus: 1,
       }
     }).then(r => {
       wx.hideLoading();

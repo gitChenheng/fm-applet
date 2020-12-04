@@ -12,11 +12,11 @@ Page({
     commentList:[],
   },
   onPatiTag:function(e){
-    const ifPartici=e.detail.value;
-    const infoId=this.data.infoId;
+    const tag=e.detail.value;
+    const infoid=this.data.infoId;
     post({
       url: '/api/actParticipate',
-      data: {infoId,ifPartici}
+      data: {infoid,tag}
     }).then(r => {
       wx.hideLoading();
       if (r.code == 1) {
@@ -34,8 +34,8 @@ Page({
     this.setData({infoId:options.id})
     wx.showLoading()
     post({
-      url: '/api/findInfo',
-      data: { type: 'single', id: options.id }
+      url: '/api/getInfoDetail',
+      data: { id: options.id }
     }).then(r => {
       wx.hideLoading();
       if (r.code == 1) {
@@ -48,7 +48,7 @@ Page({
         })
       }
     })
-    this.initComment();
+    // this.initComment();
   },
   initComment:function(){
     post({

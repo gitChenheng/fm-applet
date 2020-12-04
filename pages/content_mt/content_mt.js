@@ -17,7 +17,7 @@ Page({
       { label: '第1名奖励', id: 1 },
       { label: '第2名奖励', id: 2 },
       { label: '第3名奖励', id: 3 },
-      { label: '奖励', id: 4 },
+      { label: '普通奖品', id: -1 },
     ],
     rewardtypesIdx:null,
     rewardData:[],
@@ -83,8 +83,15 @@ Page({
     })
   },
   addtype: function () {
+    if(!this.data.type){
+      wx.showToast({
+        title: '类别不能为空',
+        icon: 'none'
+      })
+      return;
+    }
     post({
-      url: '/api/admin/addType',
+      url: '/admin/addType',
       data: { name: this.data.type }
     }).then(r => {
       if (r.code == 1) {
@@ -156,8 +163,15 @@ Page({
     this.setData({ platform: e.detail.value })
   },
   addplatform: function () {
+    if(!this.data.platform){
+      wx.showToast({
+        title: '平台不能为空',
+        icon: 'none'
+      })
+      return;
+    }
     post({
-      url: '/api/admin/addPlatform',
+      url: '/admin/addPlatform',
       data: { name: this.data.platform }
     }).then(r => {
       if (r.code == 1) {
@@ -235,16 +249,16 @@ Page({
   onShow: function () {},
   init:function(){
     post({
-      url:'/api/admin/getAllListOfAward'
+      url:'/api/getAllListOfAward'
     }).then(r=>{
       if(r.code==1){
         let d=r.data;
         this.setData({
-          typeData: d.typeData,
-          platformData: d.platformData,
-          methodData: d.methodData,
-          achData:d.achieveData,
-          rewardData:d.rewardData
+          typeData: d.types,
+          platformData: d.platforms,
+          methodData: d.methods,
+          achData:d.achieves,
+          rewardData:d.rewards
         })
       } else {
         wx.showToast({
@@ -272,7 +286,7 @@ Page({
         })
         console.log('event.currentTarget.dataset.value', event.currentTarget.dataset.value)
         wx.uploadFile({
-          url: config.requestPrefixed + '/api/admin/uploadPlatformImg',
+          url: config.requestPrefixed + '/admin/uploadPlatformImg',
           filePath: tempFilePaths[0],
           name: 'file',
           header: {
@@ -284,12 +298,17 @@ Page({
           },
           success: function (res) {
             let data = JSON.parse(res.data);
-            if (data.code === '1') {
+            if (data.code === 1) {
               wx.hideToast();
               wx.showToast({
                 title: '上传成功',
               })
               _this.init();
+            }else{
+              wx.showToast({
+                title: data.msg,
+                icon:'none'
+              })
             }
             // var data = JSON.parse(res.data);
             //服务器返回格式: { "Catalog": "testFolder", "FileName": "1.jpg", "Url": "https://test.com/1.jpg" }

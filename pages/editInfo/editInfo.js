@@ -16,6 +16,20 @@ Page({
   formSubmit:function(e){
     var obj = e.detail.value,flag=true;
     console.log(obj)
+    if(!obj.province||!obj.district||!obj.city){
+      wx.showToast({
+        title: '请选择省市区',
+        icon: 'none'
+      })
+      return;
+    }
+    if(!obj.addressDetail){
+      wx.showToast({
+        title: '请填写详细地址',
+        icon: 'none'
+      })
+      return;
+    }
     for(const k in obj){
       if(!obj[k]){
         flag=false;

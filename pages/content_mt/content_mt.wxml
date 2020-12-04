@@ -43,7 +43,7 @@
 <button class='cu-btn round bg-black lg' bindtap='addplatform' data-value="{{item.id}}">添加</button>
 <text>\n\n</text>
 
-<view>奖品：</view>
+<!-- <view>奖品：</view>
 <view class='info_block' wx:for="{{rewardData}}" wx:for-item="item" wx:key="index">
   <view style="text-align:left">
     <text class="text">名称：{{item.name}}</text>
@@ -93,7 +93,7 @@
   </view>
   <button form-type="submit" class='cu-btn round bg-black lg'>添加</button>
   <button form-type="reset" class='cu-btn round bg-black lg'>重置</button>
-</form>
+</form> -->
 
 <text>\n\n</text>
 

@@ -12,6 +12,7 @@ Page({
     msg:'',
     msgLen:0,
     maxLen:100,
+    achArr:[],
   },
   bindGetUserInfo:function(e){
     this.onLoad();
@@ -26,6 +27,7 @@ Page({
 
     wx.getSetting({
       success: res => {
+        console.log(res)
         if (res.authSetting['scope.userInfo']) {
           this.setData({ authSettingUserInfo:true})
         } else {
@@ -33,7 +35,7 @@ Page({
         }
       }
     });
-    this.getUserInfo()
+    this.getUserInfo();
   },
   getUserInfo:function(){
     wx.showLoading()
@@ -45,31 +47,31 @@ Page({
         let userInfo = r.data;
         this.setData({ userInfo });
         if(userInfo.achieve){
-          post({
-            url: '/api/findAch'
-          }).then(r => {
-            wx.hideLoading();
-            if (r&&r.code == 1) {
-              const achArr=r.data;
-              const has_achArr=userInfo.achieve.split(',');
-              let lastArr=[],achPoint=0;
-              has_achArr.forEach(it => {
-                for (let i = 0; i < achArr.length; i++) {
-                  if(String(achArr[i].id)===it){
-                    lastArr.push(achArr[i]);
-                    achPoint+=achArr[i].point;
-                    break;
-                  }
-                }
-              });
-              this.setData({achieveData:lastArr,achPoint});
-            } else {
-              r&&r.msg&&wx.showToast({
-                title: r.msg,
-                icon:'none'
-              })
-            }
-          })
+          // post({
+          //   url: '/api/findAch'
+          // }).then(r => {
+          //   wx.hideLoading();
+          //   if (r&&r.code == 1) {
+          //     const achArr=r.data;
+          //     const has_achArr=userInfo.achieve.split(',');
+          //     let lastArr=[],achPoint=0;
+          //     has_achArr.forEach(it => {
+          //       for (let i = 0; i < achArr.length; i++) {
+          //         if(String(achArr[i].id)===it){
+          //           lastArr.push(achArr[i]);
+          //           achPoint+=achArr[i].point;
+          //           break;
+          //         }
+          //       }
+          //     });
+          //     this.setData({achieveData:lastArr,achPoint});
+          //   } else {
+          //     r&&r.msg&&wx.showToast({
+          //       title: r.msg,
+          //       icon:'none'
+          //     })
+          //   }
+          // })
         }
       } else {
         r&&r.msg&&wx.showToast({
@@ -79,10 +81,33 @@ Page({
       }
     })
   },
+  getAch:function(){
+    post({
+      url: '/api/findAch'
+    }).then(r => {
+      wx.hideLoading();
+      if (r&&r.code == 1) {
+        const achArr=r.data;
+        this.setData({achArr});
+      } else {
+        r&&r.msg&&wx.showToast({
+          title: r.msg,
+          icon:'none'
+        })
+      }
+    });
+  },
   quesEv:function(e){
     this.showModal(e)
   },
   showModal(e) {
+    if(!this.data.userInfo.id){
+      wx.showToast({
+        title: '请先授权登录',
+        icon:'none',
+      })
+      return;
+    }
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
@@ -153,9 +178,8 @@ Page({
     })
   },
   signUp:function(){
-    var _this = this;
     post({
-      url:'/api/addSign'
+      url:'/api/sign'
     }).then(r=>{
       if(r.code==1){
         this.getUserInfo()
@@ -172,9 +196,13 @@ Page({
     })
   },
   range:function(){
-    wx.navigateTo({
-      url: '../range/range'
+    wx.showToast({
+      title: '敬请期待',
+      icon: 'none'
     })
+    // wx.navigateTo({
+    //   url: '../range/range'
+    // })
   },
   knock_ap:function(){
     //爆料审核

@@ -40,6 +40,7 @@
   <view class="cut-off-line"></view>
   <view class='my_topCon'>
     <view>成就：{{achPoint}}
+      <view class="quesAch gl-c2" hover-class="btn-hover" bindtap="showModal" data-target="ModalAch">?</view>
       <view wx:if='{{achieveData.length}}' style="padding:10rpx 0">
         <text
           class="{{item.point<=5?'ach-block-l1':item.point>10&&item.point<=20?'ach-block-l3':item.point>10?'ach-block-l4':'ach-block-l2'}}" wx:for='{{achieveData}}'
@@ -63,7 +64,7 @@
     <view>{{userInfo.address?userInfo.address:''}}</view>
   </view>
   <view class="cut-off-line"></view>
-  <view class="my_topCon">
+  <!-- <view class="my_topCon">
     <textarea
       class="msgboard"
       placeholder="给我们留言,{{maxLen}}字内"
@@ -76,10 +77,10 @@
   <view class="flex-between">
     <view></view>
     <button class="cu-btn bg-black margin-tb-sm" bindtap="msgboard">发送留言</button>
-    <!-- <button class="cu-btn bg-black margin-tb-sm">我的留言记录</button> -->
+    <button class="cu-btn bg-black margin-tb-sm">我的留言记录</button>
   </view>
-  <view class="cut-off-line"></view>
-  <view class='my_topCon' wx:if="{{userInfo.role===1}}">
+  <view class="cut-off-line"></view> -->
+  <view class='my_topCon' wx:if="{{userInfo.role===10}}">
     <button bindtap='my_konck' class='cu-btn block bg-black margin-tb-sm lg'>我的爆料</button>
     <button bindtap='knock_ap' class='cu-btn block bg-black margin-tb-sm lg'>爆料审核</button>
     <button bindtap='content_mt' class='cu-btn block bg-black margin-tb-sm lg'>内容维护</button>
@@ -108,6 +109,31 @@
     </view>
   </view>
 </view>
-
+<view class="cu-modal {{modalName=='ModalAch'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">成就一览</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-black"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view style="max-height: 1000rpx;overflow-y: auto;">
+        <view wx:for='{{achArr}}' wx:key='id' class="achCon">
+          <view class="achN">
+            {{item.name}}
+          </view>
+          <view class="achT">
+            {{item.conditions}}
+          </view>
+          <view class="achP">
+            <view></view>
+            <view>成就点数：{{item.point}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
 <!-- nav -->
 <nav pageCur="my"></nav>

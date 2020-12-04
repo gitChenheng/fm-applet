@@ -3,7 +3,7 @@
     {{tabArr[index].name}}
   </view>
 </scroll-view>
-<view style="padding-bottom:200rpx">
+<!-- <view style="padding-bottom:200rpx">
   <view style="display:{{TabCur==0?'block':'none'}}">
     <view wx:if="{{rangeReward['1']}}" class="cu-bar solid-bottom">
       <view class='action'>
@@ -15,7 +15,7 @@
       <view wx:if="{{rangeReward['2']}}">第 2 名：{{rangeReward['2'].name}}</view>
       <view wx:if="{{rangeReward['3']}}">第 3 名：{{rangeReward['3'].name}}</view>
     </view>
-    <!-- <view class="cu-card case {{isCard?'no-card':''}}">
+    <view class="cu-card case {{isCard?'no-card':''}}">
       <view class="cu-item shadow">
         <view class="image">
           <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="widthFix"></image>
@@ -41,7 +41,7 @@
           </view>
         </view>
       </view>
-    </view> -->
+    </view>
     <view class="cut-off-line"></view>
     <creditRange id='creditRange'></creditRange>
   </view>
@@ -68,24 +68,38 @@
     </view>
   </view>
   <view wx:if="{{TabCur==2}}" class="tabCon">
-    成就一览：
-    <view wx:if='{{userInfo.id}}' wx:for='{{achArr}}' wx:key='id' class="achCon">
-      <view class="achN">
-        {{item.name}}
+    <view>规则：进度条满后取下一工作日上证指数收盘小数位数字正序号</view>
+    <view class="lottery-block">
+    <image
+      class="lottery-img"
+      src="/img/logo.jpg"
+    ></image>
+    <view>
+      <view class="lottery-title">
+        奖品名称：yeezy boost
       </view>
-      <view class="achT">
-        {{item.conditions}}
-      </view>
-      <view class="achP">
-        <view></view>
-        <view>成就点数：{{item.point}}</view>
+      <button class="cu-btn block bg-black lottery-btn">10积分参与</button>
+      <view class="cu-progress radius striped active " style="width:400rpx;height:40rpx">
+        <view class="bg-black" style="width:{{loading?'70%':''}};">70%</view>
       </view>
     </view>
-    <view wx:if='{{!userInfo.id}}' class="tabCon">请先授权登录</view>
+    </view>
   </view>
   <view wx:if="{{TabCur==3}}" class="tabCon">
-    努力开发中...敬请期待...
+    <view wx:for='{{generalReward}}' wx:key='id' class="general-block">
+      <image
+        class="general-img"
+        src="{{requestPrefixed+item.rewardImgUrl}}"
+      ></image>
+      <view>
+        <view class="general-name">{{item.name}}</view>
+        <view class="general-credit">兑换所需积分：{{item.needCredit}}</view>
+        <button class="cu-btn block bg-black">兑换</button>
+      </view>
+    </view>
   </view>
-</view>
+</view> -->
+
+敬请期待...
 
 <nav pageCur="credit"></nav>

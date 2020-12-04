@@ -29,7 +29,7 @@
           </text>
         </view>
         <view class="patiTag">
-          <text>标记已参与 </text>
+          <text>标记已读 </text>
           <switch
             name="patiTag" checked='{{obj.participate}}'
             onchange='onPatiTag'
@@ -41,11 +41,11 @@
     <view class='middle-lv'>
       <view class="flex flex-align">
         <text>开始时间：</text>
-        <text>{{obj.startTime}}</text>
+        <text>{{obj.startAt}}</text>
       </view>
       <view class="flex flex-align">
         <text>结束时间：</text>
-        <text>{{obj.endTime}}</text>
+        <text>{{obj.endAt}}</text>
       </view>
       <!-- <view>
         <text>参与方式：</text>
@@ -72,7 +72,7 @@
       <view style='margin-bottom:20rpx;font-size:30rpx'>爆料详情</view>
       <text style="color:#8C8CA4">{{obj.details}}</text>
     </view>
-    <view class='bottom-lv'>
+    <!-- <view class='bottom-lv'>
       <input 
         class='comment' name="comment"
         placeholder="说点什么.."
@@ -80,7 +80,7 @@
         value='{{inputValue}}'
         bindconfirm='comment'
       />
-    </view>
+    </view> -->
     <view class="cut-off-line"></view>
     <view class='bottom' wx:for="{{commentList}}" wx:for-item="item" wx:key="id">
       <view>
