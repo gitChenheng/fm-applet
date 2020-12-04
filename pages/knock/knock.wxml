@@ -50,10 +50,10 @@
         <view class="picker" wx:else>{{endTime}}</view>
       </picker>
     </view>
-    <view class='knock_section'>
+    <!-- <view class='knock_section'>
       <label class='knock_label'>链接：</label>
       <input name="link" type="text" placeholder="请输入链接地址"/>
-    </view>
+    </view> -->
     <view class='knock_section'>
       <label class='knock_label' style="vertical-align:top">图片：</label>
       <image wx:if='{{imgs}}' class="uploadImg" src="{{requestPrefixed+imgs}}" bindtap='upload'></image>

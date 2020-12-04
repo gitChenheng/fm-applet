@@ -88,7 +88,7 @@ Page({
           formData: {},
           success: function (res) {
             let data = JSON.parse(res.data);
-            if (data.code === '1') {
+            if (data.code === 1) {
               wx.hideToast();
               wx.showToast({
                 title: '上传成功',
