@@ -149,6 +149,9 @@ button{
   font-size: 24rpx;
   padding: 5rpx;
   background: #25BD6C;
+  margin-right: 20rpx;
+  position:relative;
+  top: -20rpx;
 }
 .notNow{
   width: 110rpx;
@@ -158,6 +161,21 @@ button{
   font-size: 24rpx;
   padding: 5rpx;
   background: #fff;
+  margin-right: 20rpx;
+  position:relative;
+  top: -20rpx;
+}
+.ended{
+  width: 110rpx;
+  text-align: center;
+  color: #fff;
+  border:1px solid #fff;
+  font-size: 24rpx;
+  padding: 5rpx;
+  background: #B8B8B9;
+  margin-right: 20rpx;
+  position:relative;
+  top: -20rpx;
 }
 .parti{
   position: absolute;

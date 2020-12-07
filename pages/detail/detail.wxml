@@ -6,7 +6,7 @@
       <view class="info_block_view_fr">
         <image wx:if='{{obj.platformImgUrl}}' class='logo info_block_view_img' src="{{requestPrefixed+obj.platformImgUrl}}"></image>
         <image wx:else class='logo info_block_view_img' src="../../images/logo.png"></image>
-        <view>{{obj.platform}}</view>
+        <view style="font-size: 24rpx;margin-top: 10rpx;">{{obj.platform}}</view>
       </view>
       
 
@@ -17,7 +17,7 @@
         >{{obj.name}}</text>
         <view class='line'>
           <view style='font-size:26rpx' bindtap="copyInitiator">
-            <text style='color:#84859B'>{{obj.initiator}}</text><text style="font-size:18rpx;color:gray"> 点击即可复制</text>
+            <text style='color:#84859B'>{{obj.initiator}}</text><text style="font-size:18rpx;color:gray"> 点击复制</text>
           </view>
         </view>
         <view class='line'>
@@ -40,6 +40,10 @@
     <view class="cut-off-line"></view>
     <view class='middle-lv'>
       <view class="flex flex-align">
+        <text>爆料者：</text>
+        <text>{{obj.nickName?obj.nickName:'匿名'}}</text>
+      </view>
+      <view class="flex flex-align">
         <text>开始时间：</text>
         <text>{{obj.startAt}}</text>
       </view>
@@ -60,9 +64,9 @@
       </view>
       <view wx:else>暂无链接</view>
       <image
-        wx:if='{{obj.imgs}}'
+        wx:if='{{obj.img}}'
         class="uploadImg"
-        src="{{requestPrefixed+obj.imgs}}"
+        src="{{requestPrefixed+obj.img}}"
         data-target="Modal"
         bindtap="showModal"
       ></image>

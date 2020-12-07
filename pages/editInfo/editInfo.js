@@ -91,7 +91,6 @@ Page({
     })
   },
   onLoad: function (options) {
-    this.getUserInfo();
   },
   getAdrInfo:function(){
     wx.showLoading()
@@ -102,23 +101,6 @@ Page({
       if (r&&r.code == 1) {
         let userInfo = r.data;
         // this.setData({ userInfo });
-      } else {
-        r&&r.msg&&wx.showToast({
-          title: r.msg,
-          icon:'none'
-        })
-      }
-    })
-  },
-  getUserInfo:function(){
-    wx.showLoading()
-    post({
-      url: '/api/getUserInfo'
-    }).then(r => {
-      wx.hideLoading();
-      if (r&&r.code == 1) {
-        let userInfo = r.data;
-        this.setData({ userInfo });
       } else {
         r&&r.msg&&wx.showToast({
           title: r.msg,

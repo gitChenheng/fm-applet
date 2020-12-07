@@ -54,16 +54,21 @@
           <view class="info_block_view_fr">
             <image class="info_block_view_img" wx:if='{{item.platformImgUrl}}' src="{{requestPrefixed+item.platformImgUrl}}"></image>
             <image class="info_block_view_img" wx:else src="/images/logo.png"></image>
-            <view>{{item.platform}}</view>
+            <view style="font-size: 24rpx;margin-top: 10rpx;">{{item.platform}}</view>
           </view>
           <view class="info_block_view_view">
             <text style='font-size:37rpx;color:#E7E8E8;font-weight:700'>{{item.name}}</text>
             <view class='line'>
               <view style='font-size:26rpx'><text style='color:#84859B'>{{item.initiator}}</text></view>
               <view>
+                <view wx:if="{{item.ifEnd}}" class="ended radius">已结束</view>
                 <view
-                  class="{{item.ifBegin?'started':'notNow'}} radius"
-                >{{item.ifBegin?'已开始':'未开始'}}
+                  wx:elif="{{!item.ifBegin}}"
+                  class="notNow radius">
+                  未开始
+                </view>
+                <view wx:else class="started radius">
+                  已开始
                 </view>
               </view>
             </view>
@@ -72,6 +77,7 @@
               <text>
                 <text
                   class="{{item.free?'forFree':'notFree'}} radius light"
+                  style="margin-right: 20rpx;top: -10rpx;position:relative;"
                 >{{item.free?'免费参与':'付费参与'}}</text>
               </text>
             </view>

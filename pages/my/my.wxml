@@ -6,7 +6,9 @@
         <view class="userinfo-avatar" bindtap="bindViewTap">
           <open-data type="userAvatarUrl"></open-data>
         </view>
-        <text class="userinfo-nickname">{{userInfo.name}}</text>
+        <view class="userinfo-nickname">
+          <open-data type="userNickName"></open-data>
+        </view>
       </block>
       <view wx:if='{{authSettingUserInfo}}' style="margin-top: 20rpx;">
         <view class="edit" bindtap="editInfo" hover-class="btn-hover">修改资料</view>
@@ -80,10 +82,17 @@
     <button class="cu-btn bg-black margin-tb-sm">我的留言记录</button>
   </view>
   <view class="cut-off-line"></view> -->
-  <view class='my_topCon' wx:if="{{userInfo.role===10}}">
+  <view class='my_topCon'>
     <button bindtap='my_konck' class='cu-btn block bg-black margin-tb-sm lg'>我的爆料</button>
-    <button bindtap='knock_ap' class='cu-btn block bg-black margin-tb-sm lg'>爆料审核</button>
-    <button bindtap='content_mt' class='cu-btn block bg-black margin-tb-sm lg'>内容维护</button>
+    <button
+      wx:if="{{userInfo.role===10}}"
+      bindtap='knock_ap' class='cu-btn block bg-black margin-tb-sm lg'
+    >爆料审核</button>
+    <button
+      wx:if="{{userInfo.role===10}}"
+      bindtap='content_mt' class='cu-btn block bg-black margin-tb-sm lg'
+    >内容维护</button>
+    <button bindtap='my_credit' class='cu-btn block bg-black margin-tb-sm lg'>我的积分记录</button>
   </view>
 </view>
 

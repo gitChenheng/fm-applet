@@ -220,6 +220,12 @@ Page({
       url: '../my_konck/my_konck'
     })
   },
+  my_credit:function(){
+    wx.showToast({
+      title: '敬请期待',
+      icon: 'none'
+    })
+  },
   editInfo:function(){
     wx.navigateTo({
       url: '/pages/editInfo/editInfo',
