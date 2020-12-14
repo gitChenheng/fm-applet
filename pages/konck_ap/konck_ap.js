@@ -8,7 +8,7 @@ Page({
       { label: '1星', id: 1 },
       { label: '2星', id: 2 },
       { label: '3星', id: 3 },
-      { label: '精选', id: 4 },
+      // { label: '精选', id: 4 },
     ],
   },
   onLoad: function (options) {},
@@ -81,8 +81,12 @@ Page({
     const idx = e.currentTarget.dataset.infoidx;
     var pr = e.currentTarget.dataset;
     post({
-      url: '/api/admin/approve',
-      data: { id: pr.infoid, type: 0, reason: this.data.info[idx].rejectReason}
+      url: '/api/reviewInfo',
+      data: {
+        id: pr.infoid,
+        reviewStatus:2,
+        rejectReason: this.data.info[idx].rejectReason
+      }
     }).then(r => {
       if (r.code == 1) {
         wx.showToast({

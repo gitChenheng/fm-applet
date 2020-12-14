@@ -67,7 +67,7 @@
     <view class='knock_section'>
       <label class='knock_label'>备注：</label>
       <!-- <input name="remarks" placeholder="请输入备注"/> -->
-      <textarea name="details" placeholder="请输入备注"></textarea>
+      <textarea name="details" placeholder="请输入备注、详细的抽奖过程"></textarea>
     </view>
     <view class="knock_section" style='display:flex;justify-content:space-between'>
       <view>

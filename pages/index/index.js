@@ -26,9 +26,9 @@ Page({
     console.log(e);
   },
   onLoad:function(){
-    // wx.navigateTo({
-    //   url: '/pages/credit/credit',
-    // })
+    wx.navigateTo({
+      url: '/pages/credit/credit',
+    })
     let pages = getCurrentPages();
     let shareInfo=pages[pages.length - 1]['options'];
     if(shareInfo.shareId){

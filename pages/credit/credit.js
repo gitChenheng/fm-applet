@@ -8,7 +8,7 @@ Page({
   data: {
     requestPrefixed: config.requestPrefixed,
     tabArr:[
-      {name:'积分榜单'},{name:'积分转盘'},{name:'积分抽奖'},{name:'兑换专区'}
+      {name:'积分抽奖'},{name:'好物兑换'}
     ],
     TabCur: 0,
     scrollLeft:0,
